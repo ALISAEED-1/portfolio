@@ -1,0 +1,12 @@
+# Editor / OS
+.DS_Store
+Thumbs.db
+
+# Tooling
+.claude/
+node_modules/
+
+# Unused original / source images (optimized copies live in certificates/ and me.jpg)
+me.png
+certificate.png
+WhatsApp Image 2026-05-17 at 4.34.42 PM.jpeg

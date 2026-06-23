@@ -25,7 +25,8 @@
     ? '<span class="chrome"><i></i><i></i><i></i><b>' + esc(id.replace(/-/g, "")) + '.app</b></span>'
     : '<span class="notch"></span>';
 
-  const btn = (cls, href, label) => href
+  // Only render a button when there is a real destination (skip empty / "#" placeholders)
+  const btn = (cls, href, label) => (href && href !== "#")
     ? '<a class="' + cls + '" href="' + href + '"' + (href.startsWith("http") ? ' target="_blank" rel="noreferrer"' : '') + '>' + label + '</a>'
     : '';
 

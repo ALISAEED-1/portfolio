@@ -1,147 +1,281 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Muhammad Ali Saeed — Full Stack Developer</title>
-  <meta name="description" content="Portfolio of Muhammad Ali Saeed — Full Stack App & Web Developer specializing in Flutter, React, Firebase and Node." />
+  <title>Muhammad Ali Saeed — Full-Stack Developer</title>
+  <meta name="description" content="Muhammad Ali Saeed — Full-Stack App & Web Developer crafting polished mobile and web products with Flutter, React, Node.js and Firebase." />
+  <meta name="author" content="Muhammad Ali Saeed" />
+  <meta name="theme-color" content="#0b0b0f" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Muhammad Ali Saeed — Full-Stack Developer" />
+  <meta property="og:description" content="Full-Stack App & Web Developer crafting polished mobile and web products with Flutter, React, Node.js and Firebase." />
+  <meta property="og:image" content="me.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon (inline SVG monogram) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237c6cff'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='26' fill='white'%3EM%3C/text%3E%3C/svg%3E" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Apply saved theme before paint to avoid flash -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
-  <!-- Subtle mouse-reactive background -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Ambient background -->
+  <div class="bg-aurora" aria-hidden="true"></div>
   <canvas class="bg-particles" id="bgParticles" aria-hidden="true"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
 
   <!-- Navigation -->
   <header class="nav" id="nav">
     <a class="nav-logo" href="#home" aria-label="Home">MAS<span class="dot">.</span></a>
-    <nav class="nav-links" id="navLinks">
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#home" class="active">Home</a>
       <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+        <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a href="#contact" class="nav-cta">Let's talk</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-text">
-        <p class="eyebrow">HELLO, I'M</p>
-        <h1 class="hero-name">Muhammad<br/>Ali Saeed</h1>
-        <p class="hero-role">Full Stack App &amp;<br/>Web Developer</p>
-        <p class="hero-desc">
-          I build thoughtful mobile and web experiences<br/>
-          that are clean, user-friendly and impactful.
+        <span class="status-pill">
+          <span class="status-dot"></span> Available for new projects
+        </span>
+        <p class="eyebrow">FULL-STACK APP &amp; WEB DEVELOPER · RAWALPINDI, PK</p>
+        <h1 class="hero-name">
+          <span class="line"><span>Muhammad</span></span>
+          <span class="line"><span>Ali Saeed</span></span>
+        </h1>
+        <p class="hero-role">
+          I build polished products with
+          <span class="rotator" id="rotator" aria-live="polite"><span class="rotator-word">Flutter</span></span>
         </p>
-        <a href="#work" class="btn-dark">View My Work <span class="arrow">→</span></a>
+        <p class="hero-desc">
+          Mobile and web experiences that are clean, fast and genuinely useful —
+          from real-time apps to e-commerce and dashboards. Currently shipping with
+          Flutter, React &amp; Node.
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="btn btn-primary" data-magnetic>
+            View my work <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="#contact" class="btn btn-ghost" data-magnetic>Get in touch</a>
+        </div>
+        <div class="hero-socials" aria-label="Social links">
+          <a href="https://github.com/ALISAEED-1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/alisaeed-dev/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V9h3v10zM6.5 7.7a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-5.3c0-1.3-.5-2.1-1.6-2.1-.9 0-1.4.6-1.6 1.2-.1.2-.1.5-.1.8V19h-3V9h3v1.3a3 3 0 0 1 2.7-1.5c2 0 3.2 1.3 3.2 4V19z"/></svg>
+          </a>
+          <a href="mailto:alisaeed795555@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </a>
+          <a href="tel:+923125359405" aria-label="Phone">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          </a>
+        </div>
       </div>
 
       <div class="hero-image">
-        <img src="me.png" alt="Muhammad Ali Saeed" class="portrait-img" />
+        <div class="portrait-frame">
+          <img src="me.jpg" alt="Portrait of Muhammad Ali Saeed" class="portrait-img" width="440" height="506" fetchpriority="high" />
+          <span class="float-badge fb-1">Flutter</span>
+          <span class="float-badge fb-2">React</span>
+          <span class="float-badge fb-3">Node.js</span>
+          <span class="float-badge fb-4">Firebase</span>
+        </div>
+      </div>
+
+      <a href="#work" class="scroll-cue" aria-label="Scroll to work">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- TECH MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Flutter</span><span>•</span><span>React</span><span>•</span><span>React Native</span><span>•</span><span>Node.js</span><span>•</span><span>Firebase</span><span>•</span><span>MongoDB</span><span>•</span><span>Python</span><span>•</span><span>Dart</span><span>•</span><span>Express</span><span>•</span><span>Docker</span><span>•</span><span>Git</span><span>•</span><span>Figma</span><span>•</span>
+        <span>Flutter</span><span>•</span><span>React</span><span>•</span><span>React Native</span><span>•</span><span>Node.js</span><span>•</span><span>Firebase</span><span>•</span><span>MongoDB</span><span>•</span><span>Python</span><span>•</span><span>Dart</span><span>•</span><span>Express</span><span>•</span><span>Docker</span><span>•</span><span>Git</span><span>•</span><span>Figma</span><span>•</span>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <section class="stats" aria-label="Key stats">
+      <div class="stat">
+        <b class="stat-num" data-count="6" data-suffix="+">0</b>
+        <span>Projects shipped</span>
+      </div>
+      <div class="stat">
+        <b class="stat-num" data-count="12" data-suffix="+">0</b>
+        <span>Technologies</span>
+      </div>
+      <div class="stat">
+        <b class="stat-num" data-count="3.38" data-decimals="2">0</b>
+        <span>CGPA / 4.00</span>
+      </div>
+      <div class="stat">
+        <b class="stat-num" data-count="1" data-prefix="★ ">0</b>
+        <span>Best-Dev award</span>
       </div>
     </section>
 
     <!-- SELECTED WORK -->
     <section class="work" id="work">
-      <div class="work-head">
-        <div>
-          <p class="label">SELECTED WORK</p>
-          <h2 class="section-title">Projects</h2>
+      <div class="work-inner">
+        <div class="work-head">
+          <div>
+            <p class="label">SELECTED WORK</p>
+            <h2 class="section-title">Things I've built.</h2>
+          </div>
+          <a href="#contact" class="link-arrow">Start a project <span class="arrow">→</span></a>
         </div>
-        <a href="#contact" class="link-arrow">View All Projects <span class="arrow">→</span></a>
-      </div>
 
-      <a class="work-showcase" href="#contact" aria-label="Projects showcase">
-        <img src="projects/showcase.jpg" alt="Showcase of Muhammad Ali Saeed's app projects" loading="lazy" />
-      </a>
+        <a class="work-showcase" href="project.html?id=event-management" aria-label="Featured project showcase">
+          <img src="projects/showcase.jpg" alt="Showcase of Muhammad Ali Saeed's app projects" loading="lazy" />
+          <span class="showcase-tag">Featured · Tap to explore case studies</span>
+        </a>
 
-      <!-- Mobile apps: in phone mockups -->
-      <div class="group-head">
-        <p class="group-label">MOBILE APPS</p>
-        <span class="group-tag">📱 iOS &amp; Android</span>
-      </div>
-      <div class="projects projects--mobile">
-        <article class="project">
-          <a class="device phone p1" href="project.html?id=event-management" aria-label="Event Management App"><span class="notch"></span></a>
-          <div class="project-row">
-            <span class="project-num">01</span>
-            <div class="project-info">
-              <h3>Event Management App</h3>
-              <p>Mobile App Design</p>
-              <span class="tech">Flutter · Firebase</span>
+        <!-- Mobile apps — featured experiences -->
+        <div class="mx-head">
+          <p class="mx-eyebrow">FEATURED WORK</p>
+          <h3 class="mx-title">Mobile Experiences</h3>
+          <p class="mx-sub">Thoughtfully crafted mobile applications designed to solve real-world problems through intuitive user experiences.</p>
+          <span class="mx-rule" aria-hidden="true"></span>
+        </div>
+
+        <div class="mcards">
+          <article class="mcard">
+            <a class="mcard-inner" href="project.html?id=event-management" aria-label="Event Management App — view case study">
+              <div class="mcard-stage">
+                <div class="mphone">
+                  <img src="projects/event_management.jpg" alt="Event Management app — calendar view" loading="lazy" />
+                </div>
+                <span class="mcard-view">View case study <span aria-hidden="true">→</span></span>
+              </div>
+              <div class="mcard-body">
+                <div class="mcard-index"><span>01</span><i aria-hidden="true"></i></div>
+                <div class="mcard-head">
+                  <h4>Event Management</h4>
+                  <span class="mcard-cat">Productivity App</span>
+                </div>
+                <p class="mcard-desc">Discover, plan and vote on events with a shared calendar, smart filters and one-tap add to your personal calendar.</p>
+                <div class="mcard-tags"><span>Flutter</span><span>Firebase</span><span>Dart</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="mcard">
+            <a class="mcard-inner" href="project.html?id=newzler" aria-label="Newzler — view case study">
+              <div class="mcard-stage">
+                <div class="mphone">
+                  <img src="projects/newzler.jpg" alt="Newzler app — news feed" loading="lazy" />
+                </div>
+                <span class="mcard-view">View case study <span aria-hidden="true">→</span></span>
+              </div>
+              <div class="mcard-body">
+                <div class="mcard-index"><span>02</span><i aria-hidden="true"></i></div>
+                <div class="mcard-head">
+                  <h4>Newzler</h4>
+                  <span class="mcard-cat">News &amp; Media</span>
+                </div>
+                <p class="mcard-desc">A modern news reader with a personalised feed, trending headlines, in-app video and topic &amp; language controls.</p>
+                <div class="mcard-tags"><span>React Native</span><span>News API</span><span>JavaScript</span></div>
+              </div>
+            </a>
+          </article>
+
+          <article class="mcard">
+            <a class="mcard-inner" href="project.html?id=karyana-store" aria-label="Karyana Store — view case study">
+              <div class="mcard-stage">
+                <div class="mphone">
+                  <img src="projects/karyana_store.jpg" alt="Karyana Store app — product catalog" loading="lazy" />
+                </div>
+                <span class="mcard-view">View case study <span aria-hidden="true">→</span></span>
+              </div>
+              <div class="mcard-body">
+                <div class="mcard-index"><span>03</span><i aria-hidden="true"></i></div>
+                <div class="mcard-head">
+                  <h4>Karyana Store</h4>
+                  <span class="mcard-cat">E-Commerce</span>
+                </div>
+                <p class="mcard-desc">A seamless grocery shopping experience — browse by category, place bulk orders and check out, all priced in PKR.</p>
+                <div class="mcard-tags"><span>Flutter</span><span>Firebase</span><span>Payments</span></div>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <!-- Web platforms -->
+        <div class="group-head">
+          <p class="group-label">WEB PLATFORMS</p>
+          <span class="group-tag">Responsive Web</span>
+        </div>
+        <div class="projects projects--web">
+          <article class="project">
+            <a class="device browser p4" href="project.html?id=nova-cinema" aria-label="Nova Cinema case study">
+              <span class="chrome"><i></i><i></i><i></i><b>novacinema.app</b></span>
+              <span class="device-cta">View case study →</span>
+            </a>
+            <div class="project-row">
+              <span class="project-num">04</span>
+              <div class="project-info">
+                <h3>Nova Cinema</h3>
+                <p>Movie streaming platform</p>
+                <span class="tech">React · Node · MongoDB</span>
+              </div>
+              <span class="arrow">→</span>
             </div>
-            <span class="arrow">→</span>
-          </div>
-        </article>
+          </article>
 
-        <article class="project">
-          <a class="device phone p2" href="project.html?id=newzler" aria-label="Newzler"><span class="notch"></span></a>
-          <div class="project-row">
-            <span class="project-num">02</span>
-            <div class="project-info">
-              <h3>Newzler</h3>
-              <p>News Application</p>
-              <span class="tech">React Native · News API</span>
+          <article class="project">
+            <a class="device browser p5" href="project.html?id=finance-tracker" aria-label="Finance Tracker case study">
+              <span class="chrome"><i></i><i></i><i></i><b>financetracker.app</b></span>
+              <span class="device-cta">View case study →</span>
+            </a>
+            <div class="project-row">
+              <span class="project-num">05</span>
+              <div class="project-info">
+                <h3>Finance Tracker</h3>
+                <p>Personal finance dashboard</p>
+                <span class="tech">Charts · Dashboard</span>
+              </div>
+              <span class="arrow">→</span>
             </div>
-            <span class="arrow">→</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="device phone p3" href="project.html?id=karyana-store" aria-label="Karyana Store"><span class="notch"></span></a>
-          <div class="project-row">
-            <span class="project-num">03</span>
-            <div class="project-info">
-              <h3>Karyana Store</h3>
-              <p>E-Commerce Platform</p>
-              <span class="tech">Flutter · Payments</span>
-            </div>
-            <span class="arrow">→</span>
-          </div>
-        </article>
-      </div>
-
-      <!-- Web platforms: in browser mockups -->
-      <div class="group-head">
-        <p class="group-label">WEB PLATFORMS</p>
-        <span class="group-tag">🌐 Responsive Web</span>
-      </div>
-      <div class="projects projects--web">
-        <article class="project">
-          <a class="device browser p4" href="project.html?id=nova-cinema" aria-label="Nova Cinema">
-            <span class="chrome"><i></i><i></i><i></i><b>novacinema.app</b></span>
-          </a>
-          <div class="project-row">
-            <span class="project-num">04</span>
-            <div class="project-info">
-              <h3>Nova Cinema</h3>
-              <p>Entertainment Website</p>
-              <span class="tech">React · Node · MongoDB</span>
-            </div>
-            <span class="arrow">→</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="device browser p5" href="project.html?id=finance-tracker" aria-label="Personal Finance Tracker">
-            <span class="chrome"><i></i><i></i><i></i><b>financetracker.app</b></span>
-          </a>
-          <div class="project-row">
-            <span class="project-num">05</span>
-            <div class="project-info">
-              <h3>Finance Tracker</h3>
-              <p>Personal Finance Dashboard</p>
-              <span class="tech">Web App · Charts</span>
-            </div>
-            <span class="arrow">→</span>
-          </div>
-        </article>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -164,6 +298,11 @@
               <strong>Awarded Best Performance</strong> for Back-End Development during the
               6-week program, applying agile practices to ship high-quality solutions.
             </p>
+            <a class="cert-link" href="certificates/backend-internship.jpg" data-lightbox
+               data-title="Certificate of Achievement — Best Award, Back-End Development · DevelopersHub Corporation (Jul–Aug 2025)">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.2 12.5 7 22l5-3 5 3-1.2-9.5"/></svg>
+              View certificate
+            </a>
           </div>
         </div>
 
@@ -174,8 +313,13 @@
           </div>
           <div class="exp-what">
             <h3>Flutter App Development — Certified</h3>
-            <p class="exp-org">Skypulse Solution</p>
+            <p class="exp-org">Skypulse Solution · The Sky Coaching</p>
             <p>Completed a focused Flutter App Development course covering production-grade mobile architecture and state management.</p>
+            <a class="cert-link" href="certificates/flutter-course.jpg" data-lightbox
+               data-title="Course Completion Certificate — Flutter App Development · The Sky Coaching / Skypulse Solution (Mar 2026)">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.2 12.5 7 22l5-3 5 3-1.2-9.5"/></svg>
+              View certificate
+            </a>
           </div>
         </div>
 
@@ -195,36 +339,68 @@
 
     <!-- SKILLS -->
     <section class="skills">
-      <p class="label">TOOLKIT</p>
-      <h2 class="section-title">Skills &amp; technologies.</h2>
+      <div class="skills-head">
+        <p class="label">TECHNOLOGY</p>
+        <h2 class="section-title">Skills &amp; Technologies.</h2>
+        <p class="skills-sub">The tools and technologies I use to design, build, and ship scalable products.</p>
+      </div>
 
-      <div class="skills-cols">
-        <div class="skill-col">
+      <div class="skills-grid">
+        <div class="skill-card">
+          <span class="skill-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </span>
           <h4>Languages</h4>
-          <ul>
-            <li>JavaScript (ES6+)</li><li>Dart</li><li>Python</li>
-            <li>Java</li><li>C++</li><li>SQL · HTML5 · CSS3</li>
+          <p class="skill-desc">Core programming languages I rely on to build robust and efficient solutions.</p>
+          <ul class="skill-list">
+            <li class="primary"><span class="dot"></span><span class="name">Dart</span><span class="tag">Primary</span></li>
+            <li class="primary"><span class="dot"></span><span class="name">JavaScript</span><span class="tag">Primary</span></li>
+            <li><span class="dot"></span><span class="name">Python</span></li>
+            <li><span class="dot"></span><span class="name">Java</span></li>
+            <li><span class="dot"></span><span class="name">C++</span></li>
           </ul>
         </div>
-        <div class="skill-col">
+
+        <div class="skill-card">
+          <span class="skill-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.84Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+          </span>
           <h4>Frameworks</h4>
-          <ul>
-            <li>React · React Native</li><li>Node.js · Express</li>
-            <li>Flutter</li><li>Django</li><li>Tailwind · Bootstrap</li>
+          <p class="skill-desc">Modern frameworks that help me build performant, scalable, and maintainable applications.</p>
+          <ul class="skill-list">
+            <li class="primary"><span class="dot"></span><span class="name">Flutter</span><span class="tag">Primary</span></li>
+            <li class="primary"><span class="dot"></span><span class="name">React</span><span class="tag">Primary</span></li>
+            <li><span class="dot"></span><span class="name">React Native</span></li>
+            <li><span class="dot"></span><span class="name">Node.js</span></li>
           </ul>
         </div>
-        <div class="skill-col">
-          <h4>Tools &amp; Data</h4>
-          <ul>
-            <li>Firebase</li><li>MongoDB · MySQL</li>
-            <li>Git · GitHub</li><li>Docker · Postman</li><li>Figma</li>
+
+        <div class="skill-card">
+          <span class="skill-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </span>
+          <h4>Tools</h4>
+          <p class="skill-desc">Developer tools and platforms that streamline development and improve velocity.</p>
+          <ul class="skill-list">
+            <li class="primary"><span class="dot"></span><span class="name">Firebase</span><span class="tag">Primary</span></li>
+            <li class="primary"><span class="dot"></span><span class="name">Git</span><span class="tag">Primary</span></li>
+            <li><span class="dot"></span><span class="name">GitHub</span></li>
+            <li><span class="dot"></span><span class="name">Docker</span></li>
+            <li><span class="dot"></span><span class="name">Figma</span></li>
           </ul>
         </div>
-        <div class="skill-col">
-          <h4>Focus</h4>
-          <ul>
-            <li>Mobile App Dev</li><li>Web Development</li>
-            <li>REST APIs</li><li>Responsive Design</li><li>Team Leadership</li>
+
+        <div class="skill-card">
+          <span class="skill-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/><line x1="12" y1="1.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.5" y2="12"/></svg>
+          </span>
+          <h4>Focus Areas</h4>
+          <p class="skill-desc">The domains I focus on to deliver impactful digital products.</p>
+          <ul class="skill-list">
+            <li class="primary"><span class="dot"></span><span class="name">Mobile Development</span><span class="tag">Primary</span></li>
+            <li class="primary"><span class="dot"></span><span class="name">Product Design</span><span class="tag">Primary</span></li>
+            <li><span class="dot"></span><span class="name">APIs</span></li>
+            <li><span class="dot"></span><span class="name">Responsive Systems</span></li>
           </ul>
         </div>
       </div>
@@ -241,7 +417,7 @@
           from real-time apps to e-commerce and event platforms. I care about
           maintainable code and experiences that feel effortless.
         </p>
-        <a href="#contact" class="link-arrow dark">More About Me <span class="arrow">→</span></a>
+        <a href="#contact" class="link-arrow dark">Let's work together <span class="arrow">→</span></a>
       </div>
 
       <div class="connect" id="contact">
@@ -251,17 +427,33 @@
           alisaeed795555@gmail.com <span class="arrow">→</span>
         </a>
         <div class="socials">
-          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
-          <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
-          <a href="tel:+923125359405" aria-label="Phone">☏</a>
+          <a href="https://www.linkedin.com/in/alisaeed-dev/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V9h3v10zM6.5 7.7a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-5.3c0-1.3-.5-2.1-1.6-2.1-.9 0-1.4.6-1.6 1.2-.1.2-.1.5-.1.8V19h-3V9h3v1.3a3 3 0 0 1 2.7-1.5c2 0 3.2 1.3 3.2 4V19z"/></svg>
+          </a>
+          <a href="https://github.com/ALISAEED-1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+          </a>
+          <a href="tel:+923125359405" aria-label="Phone">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Certificate lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close certificate">&times;</button>
+    <figure class="lightbox-fig">
+      <img id="lightboxImg" src="" alt="" />
+      <figcaption id="lightboxCap"></figcaption>
+    </figure>
+  </div>
+
   <footer class="footer">
     <p>© <span id="year"></span> Muhammad Ali Saeed</p>
-    <p>Built with passion.</p>
+    <p class="footer-built">Designed &amp; built from scratch</p>
+    <a href="#home" class="footer-top">Back to top ↑</a>
   </footer>
 
   <script src="script.js"></script>
