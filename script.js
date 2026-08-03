@@ -33,7 +33,7 @@
   const nav = $('#nav');
   const progress = $('#scrollProgress');
   const navLinks = $$('.nav-links a');
-  const sections = ['home', 'work', 'about', 'contact']
+  const sections = ['home', 'work', 'experience', 'certifications', 'skills', 'contact']
     .map(id => document.getElementById(id)).filter(Boolean);
 
   let ticking = false;
@@ -71,7 +71,7 @@
   }
 
   /* ---------- Reveal on scroll ---------- */
-  const revealEls = $$('.work-head, .project, .mcard, .exp-item, .skill-card, .about, .connect, .stat, .experience .section-title, .skills .section-title');
+  const revealEls = $$('.work-head, .project, .mcard, .process-step, .exp-item, .skill-card, .ctrack, .ccard, .gbanner, .about, .connect, .stat, .section-title');
   if (reduceMotion || !('IntersectionObserver' in window)) {
     revealEls.forEach(el => el.classList.add('in'));
   } else {
@@ -143,6 +143,45 @@
       btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
   }
+
+  /* ---------- Journey expand / collapse ---------- */
+  const journeyToggle = $('#journeyToggle');
+  if (journeyToggle) {
+    const jcard = $('#gjourney');
+    const label = journeyToggle.querySelector('.jt-label');
+    journeyToggle.addEventListener('click', () => {
+      const open = jcard.classList.toggle('open');
+      journeyToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (label) label.textContent = open ? 'Hide Journey' : 'Explore Journey';
+    });
+  }
+
+  /* ---------- Click-to-copy phone ---------- */
+  function flashCopied(el) {
+    el.classList.add('copied');
+    setTimeout(() => el.classList.remove('copied'), 1700);
+  }
+  function copyText(text, el) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => flashCopied(el)).catch(() => legacyCopy(text, el));
+    } else {
+      legacyCopy(text, el);
+    }
+  }
+  function legacyCopy(text, el) {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      flashCopied(el);
+    } catch (e) {}
+  }
+  $$('.copy-phone').forEach(a => {
+    a.addEventListener('click', () => copyText(a.dataset.phone || a.textContent.trim(), a));
+  });
 
   /* ---------- Certificate lightbox ---------- */
   const lightbox = $('#lightbox');

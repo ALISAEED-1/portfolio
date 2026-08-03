@@ -1,0 +1,13 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "me.png",
+      "certificate.png",
+      "WhatsApp Image 2026-05-17 at 4.34.42 PM.jpeg"
+    ]
+  }
+}

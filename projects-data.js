@@ -13,7 +13,7 @@ window.PROJECTS = {
     hero: "projects/event_management.jpg",
     description: "A mobile app to discover, plan and vote on events — browse a shared calendar, filter by city and category, save favourites and add events straight to your personal calendar.",
     tags: ["Flutter", "Firebase", "Calendar"],
-    links: { demo: "#", github: "https://github.com/ALISAEED-1", pdf: "" },
+    links: { demo: "#", github: "", pdf: "" },
     meta: { role: "Solo Developer", duration: "6 Weeks", platform: "Android", status: "Completed", release: "2025" },
     problem: [
       "People rely on scattered group chats and messages to plan events, so it's hard to keep track of what's happening and when.",
@@ -55,7 +55,7 @@ window.PROJECTS = {
     hero: "projects/newzler.jpg",
     description: "A personalised news reader — trending headlines, a tailored “My News” feed, topic categories, in-app video and search, with language preferences you control.",
     tags: ["React Native", "News API", "Personalization"],
-    links: { demo: "#", github: "https://github.com/ALISAEED-1", pdf: "" },
+    links: { demo: "#", github: "", pdf: "" },
     meta: { role: "Solo Developer", duration: "4 Weeks", platform: "Android & iOS", status: "Completed", release: "2025" },
     problem: [
       "News apps overwhelm users with everything at once instead of what they actually care about.",
@@ -97,7 +97,7 @@ window.PROJECTS = {
     hero: "projects/karyana_store.jpg",
     description: "An online grocery (karyana) store — browse spices, grains and pulses by category, place bulk orders, manage favourites and check out, all priced in PKR.",
     tags: ["Flutter", "Payments", "E-Commerce"],
-    links: { demo: "#", github: "https://github.com/ALISAEED-1", pdf: "" },
+    links: { demo: "#", github: "", pdf: "" },
     meta: { role: "Solo Developer", duration: "5 Weeks", platform: "Android", status: "Completed", release: "2025" },
     problem: [
       "Local grocery shopping is time-consuming, and small kiryana stores rarely have a simple online presence.",
@@ -139,7 +139,7 @@ window.PROJECTS = {
     hero: "projects/nova_cinema.jpg",
     description: "A movie-streaming web platform with a Netflix-style browse experience — trending rows, rich detail pages, search, watch-time stats and a full account dashboard.",
     tags: ["React", "Node", "MongoDB"],
-    links: { demo: "#", github: "https://github.com/ALISAEED-1", pdf: "" },
+    links: { demo: "#", github: "", pdf: "" },
     meta: { role: "Solo Developer", duration: "8 Weeks", platform: "Web", status: "Completed", release: "2025" },
     problem: [
       "Building a streaming experience means handling discovery, search and user accounts together — not just a list of videos.",
@@ -181,7 +181,7 @@ window.PROJECTS = {
     hero: "projects/finance_tracker.jpg",
     description: "A personal finance dashboard to track income, expenses, budgets and savings goals — with categories, beautiful charts and clear monthly reports.",
     tags: ["Web App", "Charts", "Dashboard"],
-    links: { demo: "#", github: "https://github.com/ALISAEED-1", pdf: "" },
+    links: { demo: "#", github: "", pdf: "" },
     meta: { role: "Solo Developer", duration: "2 Months", platform: "Web", status: "Completed", release: "2025" },
     problem: [
       "Many people find it hard to track daily expenses and manage budgets effectively.",

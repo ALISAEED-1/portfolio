@@ -27,8 +27,7 @@
   <script>
     (function () {
       try {
-        var t = localStorage.getItem('theme');
-        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        var t = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', t);
       } catch (e) {}
     })();
@@ -51,7 +50,9 @@
     <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#home" class="active">Home</a>
       <a href="#work">Work</a>
-      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-actions">
@@ -70,9 +71,14 @@
     <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-text">
-        <span class="status-pill">
-          <span class="status-dot"></span> Available for new projects
-        </span>
+        <div class="hero-pills">
+          <a href="#certifications" class="gcert-pill" aria-label="Google-certified — see certifications">
+            <span class="gcert-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="15" height="15"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.2-2.2H12v4h6.6c-.1 1.1-.9 2.8-2.5 3.9l3.8 3c2.3-2.1 3.6-5.2 3.6-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.8-3c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.1-6.8-5l-4 3.1C3.2 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.2 14.3a7.4 7.4 0 0 1 0-4.6l-4-3.1a12 12 0 0 0 0 10.8l4-3.1z"/><path fill="#EA4335" d="M12 4.7c2.3 0 3.8 1 4.7 1.8l3.4-3.3C18 1.2 15.2 0 12 0 7.3 0 3.2 2.7 1.2 6.6l4 3.1C6.1 6.8 8.8 4.7 12 4.7z"/></svg>
+            </span>
+            Google-Certified · 8 courses
+          </a>
+        </div>
         <p class="eyebrow">FULL-STACK APP &amp; WEB DEVELOPER · RAWALPINDI, PK</p>
         <h1 class="hero-name">
           <span class="line"><span>Muhammad</span></span>
@@ -94,16 +100,13 @@
           <a href="#contact" class="btn btn-ghost" data-magnetic>Get in touch</a>
         </div>
         <div class="hero-socials" aria-label="Social links">
-          <a href="https://github.com/ALISAEED-1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-          </a>
           <a href="https://www.linkedin.com/in/alisaeed-dev/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V9h3v10zM6.5 7.7a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-5.3c0-1.3-.5-2.1-1.6-2.1-.9 0-1.4.6-1.6 1.2-.1.2-.1.5-.1.8V19h-3V9h3v1.3a3 3 0 0 1 2.7-1.5c2 0 3.2 1.3 3.2 4V19z"/></svg>
           </a>
           <a href="mailto:alisaeed795555@gmail.com" aria-label="Email">
             <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
           </a>
-          <a href="tel:+923125359405" aria-label="Phone">
+          <a href="tel:+923125359405" class="copy-phone" data-phone="+92 312 5359405" aria-label="Call +92 312 5359405 — click to copy" title="+92 312 5359405">
             <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
           </a>
         </div>
@@ -149,6 +152,10 @@
       <div class="stat">
         <b class="stat-num" data-count="1" data-prefix="★ ">0</b>
         <span>Best-Dev award</span>
+      </div>
+      <div class="stat">
+        <b class="stat-num" data-count="8">0</b>
+        <span>Google certifications</span>
       </div>
     </section>
 
@@ -280,11 +287,28 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section class="experience">
+    <section class="experience" id="experience">
       <p class="label">EXPERIENCE &amp; EDUCATION</p>
       <h2 class="section-title">A short track record.</h2>
 
       <div class="exp-list">
+        <div class="exp-item">
+          <div class="exp-when">
+            <span>Mar 2026</span>
+            <span class="exp-place">The Sky Coaching</span>
+          </div>
+          <div class="exp-what">
+            <h3>Flutter App Development — Certified</h3>
+            <p class="exp-org">Skypulse Solution · The Sky Coaching</p>
+            <p>Completed a focused Flutter App Development course covering production-grade mobile architecture and state management.</p>
+            <a class="cert-link" href="certificates/flutter-course.jpg" data-lightbox
+               data-title="Course Completion Certificate — Flutter App Development · The Sky Coaching / Skypulse Solution (Mar 2026)">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.2 12.5 7 22l5-3 5 3-1.2-9.5"/></svg>
+              View certificate
+            </a>
+          </div>
+        </div>
+
         <div class="exp-item">
           <div class="exp-when">
             <span>Jul — Aug 2025</span>
@@ -308,23 +332,6 @@
 
         <div class="exp-item">
           <div class="exp-when">
-            <span>Mar 2026</span>
-            <span class="exp-place">The Sky Coaching</span>
-          </div>
-          <div class="exp-what">
-            <h3>Flutter App Development — Certified</h3>
-            <p class="exp-org">Skypulse Solution · The Sky Coaching</p>
-            <p>Completed a focused Flutter App Development course covering production-grade mobile architecture and state management.</p>
-            <a class="cert-link" href="certificates/flutter-course.jpg" data-lightbox
-               data-title="Course Completion Certificate — Flutter App Development · The Sky Coaching / Skypulse Solution (Mar 2026)">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.2 12.5 7 22l5-3 5 3-1.2-9.5"/></svg>
-              View certificate
-            </a>
-          </div>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-when">
             <span>Enrolled</span>
             <span class="exp-place">Rawalpindi</span>
           </div>
@@ -337,8 +344,130 @@
       </div>
     </section>
 
+    <!-- CERTIFICATIONS -->
+    <section class="certs" id="certifications">
+      <div class="certs-head">
+        <p class="label">CREDENTIALS</p>
+        <h2 class="section-title">Certified — and applied.</h2>
+        <p class="certs-sub">
+          Every certification below was chosen to make the mobile work stronger, not to point
+          somewhere else — analytics sharpens how I model and read the data my apps produce, and
+          decide what to build next.
+        </p>
+      </div>
+
+      <!-- Google Data Analytics — journey card -->
+      <div class="jcard" id="gjourney">
+        <div class="jcard-top">
+          <span class="jcard-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.2-2.2H12v4h6.6c-.1 1.1-.9 2.8-2.5 3.9l3.8 3c2.3-2.1 3.6-5.2 3.6-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.8-3c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.1-6.8-5l-4 3.1C3.2 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.2 14.3a7.4 7.4 0 0 1 0-4.6l-4-3.1a12 12 0 0 0 0 10.8l4-3.1z"/><path fill="#EA4335" d="M12 4.7c2.3 0 3.8 1 4.7 1.8l3.4-3.3C18 1.2 15.2 0 12 0 7.3 0 3.2 2.7 1.2 6.6l4 3.1C6.1 6.8 8.8 4.7 12 4.7z"/></svg>
+          </span>
+          <div class="jcard-info">
+            <h3>Google Professional Data Analytics</h3>
+            <p class="jcard-sub">Google × Coursera</p>
+            <div class="jcard-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Issued Jul 2026</span>
+              <span class="jcard-sep" aria-hidden="true">•</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> 8 Courses</span>
+            </div>
+          </div>
+          <span class="jcard-badge" aria-hidden="true"><b>8</b><i>Courses</i></span>
+        </div>
+        <p class="jcard-desc">Learned how to transform raw data into meaningful product decisions — and applied these concepts directly while building my Flutter applications.</p>
+        <button class="jcard-toggle" id="journeyToggle" aria-expanded="false" aria-controls="journeyPanel">
+          <svg class="jt-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <span class="jt-label">Explore Journey</span>
+        </button>
+
+        <div class="jcard-journey" id="journeyPanel" role="region" aria-label="Course journey">
+          <div class="jcard-journey-inner">
+            <ol class="jtimeline">
+              <li class="jstep">
+                <span class="jstep-node" aria-hidden="true"></span>
+                <div class="jstep-body"><h4>Foundations</h4><p>Data, Data, Everywhere</p></div>
+                <a class="jstep-verify" href="https://coursera.org/verify/X90ASRDPBFJF" target="_blank" rel="noopener noreferrer">Verify</a>
+              </li>
+              <li class="jstep">
+                <span class="jstep-node" aria-hidden="true"></span>
+                <div class="jstep-body"><h4>Ask Questions</h4><p>Ask Questions to Make Data-Driven Decisions</p></div>
+                <a class="jstep-verify" href="https://coursera.org/verify/MZ2W6IH3IBFF" target="_blank" rel="noopener noreferrer">Verify</a>
+              </li>
+              <li class="jstep">
+                <span class="jstep-node" aria-hidden="true"></span>
+                <div class="jstep-body"><h4>Data Preparation</h4><p>Prepare Data for Exploration</p></div>
+                <a class="jstep-verify" href="https://coursera.org/verify/4S5BUFIYN9WY" target="_blank" rel="noopener noreferrer">Verify</a>
+              </li>
+              <li class="jstep">
+                <span class="jstep-node" aria-hidden="true"></span>
+                <div class="jstep-body"><h4>Data Cleaning</h4><p>Process Data from Dirty to Clean</p></div>
+                <a class="jstep-verify" href="https://coursera.org/verify/C4DOAEVJA3JO" target="_blank" rel="noopener noreferrer">Verify</a>
+              </li>
+              <li class="jstep">
+                <span class="jstep-node" aria-hidden="true"></span>
+                <div class="jstep-body"><h4>Analysis</h4><p>Analyze Data to Answer Questions</p></div>
+                <a class="jstep-verify" href="https://coursera.org/verify/ID97Q1F8VYFK" target="_blank" rel="noopener noreferrer">Verify</a>
+              </li>
+              <li class="jstep">
+                <span class="jstep-node" aria-hidden="true"></span>
+                <div class="jstep-body"><h4>Visualisation</h4><p>Share Data Through the Art of Visualization</p></div>
+                <a class="jstep-verify" href="https://coursera.org/verify/GGYUXQWQ4BB1" target="_blank" rel="noopener noreferrer">Verify</a>
+              </li>
+              <li class="jstep">
+                <span class="jstep-node" aria-hidden="true"></span>
+                <div class="jstep-body"><h4>Python</h4><p>Introduction to Data Analysis Using Python</p></div>
+                <a class="jstep-verify" href="https://coursera.org/verify/PD50QTRD4OXN" target="_blank" rel="noopener noreferrer">Verify</a>
+              </li>
+              <li class="jstep">
+                <span class="jstep-node" aria-hidden="true"></span>
+                <div class="jstep-body"><h4>Capstone</h4><p>Data Analytics Capstone: Complete a Case Study</p></div>
+                <a class="jstep-verify" href="https://coursera.org/verify/WCVCH75OXJQ3" target="_blank" rel="noopener noreferrer">Verify</a>
+              </li>
+              <li class="jstep jstep--applied">
+                <span class="jstep-node jstep-node--star" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+                </span>
+                <div class="jstep-body jstep-applied-body">
+                  <h4>Applied in Flutter Projects</h4>
+                  <div class="japplied-chips">
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5M3 12a9 3 0 0 0 18 0"/></svg> Firestore data modelling</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="13" y="8" width="3" height="10"/></svg> Dashboard analytics</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg> User engagement tracking</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9v9z"/><path d="M12 3a9 9 0 0 1 9 9h-9z"/></svg> Chart visualisations</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg> Feature decision making</span>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Development & academic credentials -->
+      <h3 class="certs-sub-head">Development &amp; academic credentials</h3>
+      <div class="cert-cards">
+        <a class="ccard" href="certificates/flutter-course.jpg" data-lightbox
+           data-title="Course Completion Certificate — Flutter App Development · The Sky Coaching / Skypulse Solution (Mar 2026)">
+          <span class="ccard-tag ccard-tag--core">Core</span>
+          <h4>Flutter App Development</h4>
+          <p class="ccard-org">The Sky Coaching · Skypulse Solution</p>
+          <p class="ccard-desc">Production-grade mobile architecture and state management — the foundation the four shipped apps are built on.</p>
+          <span class="ccard-foot">Mar 2026 <i>View certificate →</i></span>
+        </a>
+
+        <a class="ccard" href="certificates/backend-internship.jpg" data-lightbox
+           data-title="Certificate of Achievement — Best Performance Award, Back-End Development · DevelopersHub Corporation (Jul–Aug 2025)">
+          <span class="ccard-tag ccard-tag--award">★ Best Award</span>
+          <h4>Back-End Development Internship</h4>
+          <p class="ccard-org">DevelopersHub Corporation</p>
+          <p class="ccard-desc">Six-week virtual internship building REST endpoints and back-end features — recognised for exceptional performance.</p>
+          <span class="ccard-foot">Jul – Aug 2025 <i>View certificate →</i></span>
+        </a>
+
+      </div>
+    </section>
+
     <!-- SKILLS -->
-    <section class="skills">
+    <section class="skills" id="skills">
       <div class="skills-head">
         <p class="label">TECHNOLOGY</p>
         <h2 class="section-title">Skills &amp; Technologies.</h2>
@@ -400,8 +529,43 @@
             <li class="primary"><span class="dot"></span><span class="name">Mobile Development</span><span class="tag">Primary</span></li>
             <li class="primary"><span class="dot"></span><span class="name">Product Design</span><span class="tag">Primary</span></li>
             <li><span class="dot"></span><span class="name">APIs</span></li>
+            <li><span class="dot"></span><span class="name">In-App Analytics</span><span class="tag">Certified</span></li>
+            <li><span class="dot"></span><span class="name">App Security &amp; Auth</span><span class="tag">Certified</span></li>
             <li><span class="dot"></span><span class="name">Responsive Systems</span></li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process" id="process">
+      <p class="label">HOW I WORK</p>
+      <h2 class="section-title">My process.</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <span class="process-num">01</span>
+          <h3>Discovery</h3>
+          <p>Understand the problem, goals and users, then define scope and what success looks like.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">02</span>
+          <h3>Design</h3>
+          <p>Wireframes and clean UI that balance clarity with a polished, modern feel.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">03</span>
+          <h3>Build</h3>
+          <p>Maintainable, well-structured code with the right architecture for the job.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">04</span>
+          <h3>Test</h3>
+          <p>Real-device testing, edge cases and performance tuning before anything ships.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">05</span>
+          <h3>Launch</h3>
+          <p>Deploy, monitor and iterate based on real feedback and usage.</p>
         </div>
       </div>
     </section>
@@ -433,7 +597,7 @@
           <a href="https://github.com/ALISAEED-1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
           </a>
-          <a href="tel:+923125359405" aria-label="Phone">
+          <a href="tel:+923125359405" class="copy-phone" data-phone="+92 312 5359405" aria-label="Call +92 312 5359405 — click to copy" title="+92 312 5359405">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
           </a>
         </div>
