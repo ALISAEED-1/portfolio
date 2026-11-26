@@ -6,6 +6,9 @@ Thumbs.db
 .claude/
 node_modules/
 
+# Social promo assets (kept local, not deployed)
+promo/
+
 # Unused original / source images (optimized copies live in certificates/ and me.jpg)
 me.png
 certificate.png

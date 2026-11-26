@@ -776,9 +776,32 @@
   lbClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
+  /* ---------- Intro video (loads only when opened) ---------- */
+  const vmodal = $('#vmodal');
+  const introVideo = $('#introVideo');
+  const introBtn = $('#introBtn');
+  function openIntro() {
+    if (!introVideo.getAttribute('src')) introVideo.src = introVideo.dataset.src;
+    vmodal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    introVideo.currentTime = 0;
+    const p = introVideo.play();
+    if (p && p.catch) p.catch(() => { /* autoplay blocked: controls stay visible */ });
+    $('.vmodal-close', vmodal).focus({ preventScroll: true });
+  }
+  function closeIntro() {
+    introVideo.pause();
+    vmodal.hidden = true;
+    if (!currentCase) document.body.style.overflow = '';
+    introBtn.focus({ preventScroll: true });
+  }
+  introBtn.addEventListener('click', openIntro);
+  vmodal.addEventListener('click', (e) => { if (e.target.closest('[data-vclose]')) closeIntro(); });
+
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-    if (!lightbox.hidden) closeLightbox();
+    if (!vmodal.hidden) closeIntro();
+    else if (!lightbox.hidden) closeLightbox();
     else if (currentCase) closeCase();
     else if (navList.classList.contains('open')) setMenu(false);
   });

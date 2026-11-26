@@ -1170,3 +1170,48 @@ s { text-decoration-thickness: 1.5px; text-decoration-color: rgba(194, 65, 12, .
   .mm-c2 { display: none; }
   .cf-shots.art { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ═════════ INTRO VIDEO ═════════ */
+.play-btn {
+  display: inline-flex; align-items: center; gap: 12px; margin-top: 18px;
+  padding: 7px 20px 7px 7px; border-radius: 999px; text-align: left;
+  border: 1px solid var(--line-2); background: var(--glass); color: var(--text);
+  transition: border-color .25s, transform .35s var(--spring), box-shadow .3s;
+}
+.play-btn:hover { border-color: var(--text); transform: translateY(-2px); box-shadow: var(--shadow); }
+.play-ico {
+  position: relative; width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+  display: grid; place-items: center; background: var(--text); color: var(--on-text);
+  transition: transform .4s var(--spring);
+}
+.play-ico svg { margin-left: 2px; }
+.play-ico::after {
+  content: ''; position: absolute; inset: -5px; border-radius: 50%;
+  border: 2px solid var(--accent); opacity: 0; animation: playPing 2.4s var(--ease) infinite;
+}
+@keyframes playPing { 0% { transform: scale(.85); opacity: .7; } 70%, 100% { transform: scale(1.35); opacity: 0; } }
+.play-btn:hover .play-ico { transform: scale(1.1); }
+.play-txt b { display: block; font-size: 14.5px; font-weight: 600; }
+.play-txt small { display: block; font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+.vmodal { position: fixed; inset: 0; z-index: 450; display: grid; place-items: center; padding: 24px; }
+.vmodal[hidden] { display: none; }
+.vmodal-backdrop { position: absolute; inset: 0; background: rgba(10, 11, 15, .88); backdrop-filter: blur(8px); animation: fade .3s ease; }
+.vmodal-box {
+  position: relative; height: min(86vh, 900px); max-width: 100%; aspect-ratio: 4 / 5;
+  border-radius: 22px; overflow: hidden; background: #000;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, .6);
+  animation: vIn .45s var(--spring);
+}
+@keyframes vIn { from { opacity: 0; transform: scale(.94) translateY(16px); } }
+.vmodal-box video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+.vmodal-close {
+  position: absolute; top: 18px; right: 20px; width: 44px; height: 44px; border-radius: 50%;
+  color: #fff; border: 1px solid rgba(255, 255, 255, .3); background: rgba(255, 255, 255, .06);
+  transition: transform .3s var(--ease), background .2s;
+}
+.vmodal-close:hover { transform: rotate(90deg); background: rgba(255, 255, 255, .14); }
+@media (max-width: 640px) {
+  .vmodal { padding: 12px; }
+  .vmodal-box { height: auto; width: 100%; }
+}

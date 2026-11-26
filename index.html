@@ -86,6 +86,10 @@
             <a href="#solve" class="btn btn-dark fx" data-magnetic>Bring me a problem <span class="arr" aria-hidden="true">→</span></a>
             <a href="#work" class="btn btn-ghost fx"><span class="roll"><span data-text="See the work">See the work</span></span></a>
           </div>
+          <button class="play-btn fx reveal" id="introBtn" type="button" aria-haspopup="dialog">
+            <span class="play-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
+            <span class="play-txt"><b>Watch the intro</b><small>20 seconds · sound on</small></span>
+          </button>
         </div>
 
         <div class="hero-visual reveal">
@@ -422,6 +426,15 @@
       </div>
       <div class="drawer-body" id="drawerBody"></div>
     </aside>
+  </div>
+
+  <!-- ═════════ INTRO VIDEO ═════════ -->
+  <div class="vmodal" id="vmodal" hidden>
+    <div class="vmodal-backdrop" data-vclose></div>
+    <div class="vmodal-box" role="dialog" aria-modal="true" aria-label="20-second portfolio intro">
+      <video id="introVideo" controls playsinline preload="none" poster="media/intro-poster.jpg" data-src="media/portfolio-intro.mp4"></video>
+    </div>
+    <button class="vmodal-close" data-vclose aria-label="Close video">✕</button>
   </div>
 
   <!-- ═════════ LIGHTBOX ═════════ -->
