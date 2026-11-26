@@ -1,625 +1,441 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Muhammad Ali Saeed — Full-Stack Developer</title>
-  <meta name="description" content="Muhammad Ali Saeed — Full-Stack App & Web Developer crafting polished mobile and web products with Flutter, React, Node.js and Firebase." />
-  <meta name="author" content="Muhammad Ali Saeed" />
-  <meta name="theme-color" content="#0b0b0f" />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Muhammad Ali Saeed — Full-Stack Developer" />
-  <meta property="og:description" content="Full-Stack App & Web Developer crafting polished mobile and web products with Flutter, React, Node.js and Firebase." />
-  <meta property="og:image" content="me.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Favicon (inline SVG monogram) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237c6cff'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='26' fill='white'%3EM%3C/text%3E%3C/svg%3E" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>Muhammad Ali Saeed — Flutter Developer & Problem Solver</title>
+  <meta name="description" content="Flutter developer who starts with the problem, not the screen. One codebase for Android and iOS — clean, fast and easy to maintain." />
+  <meta name="theme-color" content="#f8f8f5" />
+  <meta property="og:title" content="Muhammad Ali Saeed — Flutter Developer & Problem Solver" />
+  <meta property="og:description" content="Give me the hard part. I'll give you a polished app." />
+  <meta property="og:image" content="projects/showcase.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101218'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='24' fill='white'%3EM%3C/text%3E%3Ccircle cx='47' cy='44' r='4' fill='%234f5fd6'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Apply saved theme before paint to avoid flash -->
   <script>
     (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
       try {
-        var t = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', t);
+        if (localStorage.getItem('mas-theme') === 'dark') {
+          d.setAttribute('data-theme', 'dark');
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0c0d11');
+        }
       } catch (e) {}
     })();
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Scroll progress -->
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="g-logo" viewBox="0 0 48 48">
+      <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+      <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+      <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.920 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+    </symbol>
+  </svg>
 
-  <!-- Ambient background -->
-  <div class="bg-aurora" aria-hidden="true"></div>
-  <canvas class="bg-particles" id="bgParticles" aria-hidden="true"></canvas>
-  <div class="bg-grain" aria-hidden="true"></div>
+  <canvas class="bg-dots" id="bgDots" aria-hidden="true"></canvas>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <!-- Navigation -->
+  <!-- ═════════ NAV ═════════ -->
   <header class="nav" id="nav">
-    <a class="nav-logo" href="#home" aria-label="Home">MAS<span class="dot">.</span></a>
+    <a class="nav-logo" href="#home" aria-label="Muhammad Ali Saeed — home">MAS<span class="dot">.</span></a>
     <nav class="nav-links" id="navLinks" aria-label="Primary">
-      <a href="#home" class="active">Home</a>
+      <a href="#home">Home</a>
       <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
-      <a href="#certifications">Certifications</a>
+      <a href="#solve">How I solve</a>
+      <a href="#track">Track record</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
-        <svg class="ico-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <button class="theme-toggle fx" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
+        <svg class="ico-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2z"/></svg>
+        <svg class="ico-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
       </button>
-      <a href="#contact" class="nav-cta">Let's talk</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <a href="#contact" class="nav-cta fx" data-magnetic>Let's talk</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
       </button>
     </div>
   </header>
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="hero-text">
-        <div class="hero-pills">
-          <a href="#certifications" class="gcert-pill" aria-label="Google-certified — see certifications">
-            <span class="gcert-logo" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="15" height="15"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.2-2.2H12v4h6.6c-.1 1.1-.9 2.8-2.5 3.9l3.8 3c2.3-2.1 3.6-5.2 3.6-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.8-3c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.1-6.8-5l-4 3.1C3.2 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.2 14.3a7.4 7.4 0 0 1 0-4.6l-4-3.1a12 12 0 0 0 0 10.8l4-3.1z"/><path fill="#EA4335" d="M12 4.7c2.3 0 3.8 1 4.7 1.8l3.4-3.3C18 1.2 15.2 0 12 0 7.3 0 3.2 2.7 1.2 6.6l4 3.1C6.1 6.8 8.8 4.7 12 4.7z"/></svg>
+  <main>
+
+    <!-- ═════════ HERO ═════════ -->
+    <section class="section hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <a class="cred-pill reveal" href="#track">
+            <svg width="14" height="14"><use href="#g-logo"/></svg>
+            Flutter-certified · 2 Google Professional Certificates
+          </a>
+          <p class="eyebrow reveal">Flutter developer · Problem solver · Rawalpindi, PK</p>
+          <h1 class="hero-name reveal">Muhammad<br>Ali Saeed<span class="dot">.</span></h1>
+          <p class="hero-lede reveal">
+            Give me <span class="scramble" id="scramble">scattered plans</span>.<br>
+            I'll give you a <em>polished app</em>.
+          </p>
+          <p class="hero-sub reveal">I start with the problem, not the screen — then build it once in <strong class="flutter">Flutter</strong> for Android and iOS. Clean architecture, fast screens, easy to maintain.</p>
+          <div class="hero-ctas reveal">
+            <a href="#solve" class="btn btn-dark fx" data-magnetic>Bring me a problem <span class="arr" aria-hidden="true">→</span></a>
+            <a href="#work" class="btn btn-ghost fx"><span class="roll"><span data-text="See the work">See the work</span></span></a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="portrait-card">
+            <div class="portrait-sheen" aria-hidden="true"></div>
+            <img src="me.jpg" alt="Portrait of Muhammad Ali Saeed" class="portrait-img" width="1000" height="1000" />
+            <span class="fbadge fb1">Flutter</span>
+            <span class="fbadge fb2">Dart</span>
+            <span class="fbadge fb3">Firebase</span>
+            <span class="fbadge fb4">Node.js</span>
+            <span class="avail"><i class="pulse"></i>Open to Flutter projects</span>
+          </div>
+
+          <button class="ticket" id="ticket" type="button" aria-live="polite" aria-label="Open the matching case study">
+            <span class="ticket-row">
+              <span class="ticket-k k-problem">Problem</span>
+              <span class="ticket-v" id="tProblem">Group plans get lost in endless chat threads.</span>
             </span>
-            Google-Certified · 8 courses
-          </a>
-        </div>
-        <p class="eyebrow">FULL-STACK APP &amp; WEB DEVELOPER · RAWALPINDI, PK</p>
-        <h1 class="hero-name">
-          <span class="line"><span>Muhammad</span></span>
-          <span class="line"><span>Ali Saeed</span></span>
-        </h1>
-        <p class="hero-role">
-          I build polished products with
-          <span class="rotator" id="rotator" aria-live="polite"><span class="rotator-word">Flutter</span></span>
-        </p>
-        <p class="hero-desc">
-          Mobile and web experiences that are clean, fast and genuinely useful —
-          from real-time apps to e-commerce and dashboards. Currently shipping with
-          Flutter, React &amp; Node.
-        </p>
-        <div class="hero-actions">
-          <a href="#work" class="btn btn-primary" data-magnetic>
-            View my work <span class="arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="#contact" class="btn btn-ghost" data-magnetic>Get in touch</a>
-        </div>
-        <div class="hero-socials" aria-label="Social links">
-          <a href="https://www.linkedin.com/in/alisaeed-dev/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V9h3v10zM6.5 7.7a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-5.3c0-1.3-.5-2.1-1.6-2.1-.9 0-1.4.6-1.6 1.2-.1.2-.1.5-.1.8V19h-3V9h3v1.3a3 3 0 0 1 2.7-1.5c2 0 3.2 1.3 3.2 4V19z"/></svg>
-          </a>
-          <a href="mailto:alisaeed795555@gmail.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          </a>
-          <a href="tel:+923125359405" class="copy-phone" data-phone="+92 312 5359405" aria-label="Call +92 312 5359405 — click to copy" title="+92 312 5359405">
-            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-          </a>
+            <span class="ticket-row">
+              <span class="ticket-k k-solved">Solved</span>
+              <span class="ticket-v" id="tSolved"><b>Event Management</b> — shared calendar, voting &amp; filters</span>
+            </span>
+            <span class="ticket-bar"><i id="ticketFill"></i></span>
+          </button>
         </div>
       </div>
 
-      <div class="hero-image">
-        <div class="portrait-frame">
-          <img src="me.jpg" alt="Portrait of Muhammad Ali Saeed" class="portrait-img" width="440" height="506" fetchpriority="high" />
-          <span class="float-badge fb-1">Flutter</span>
-          <span class="float-badge fb-2">React</span>
-          <span class="float-badge fb-3">Node.js</span>
-          <span class="float-badge fb-4">Firebase</span>
-        </div>
-      </div>
-
-      <a href="#work" class="scroll-cue" aria-label="Scroll to work">
-        <span></span>
-      </a>
-    </section>
-
-    <!-- TECH MARQUEE -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Flutter</span><span>•</span><span>React</span><span>•</span><span>React Native</span><span>•</span><span>Node.js</span><span>•</span><span>Firebase</span><span>•</span><span>MongoDB</span><span>•</span><span>Python</span><span>•</span><span>Dart</span><span>•</span><span>Express</span><span>•</span><span>Docker</span><span>•</span><span>Git</span><span>•</span><span>Figma</span><span>•</span>
-        <span>Flutter</span><span>•</span><span>React</span><span>•</span><span>React Native</span><span>•</span><span>Node.js</span><span>•</span><span>Firebase</span><span>•</span><span>MongoDB</span><span>•</span><span>Python</span><span>•</span><span>Dart</span><span>•</span><span>Express</span><span>•</span><span>Docker</span><span>•</span><span>Git</span><span>•</span><span>Figma</span><span>•</span>
-      </div>
-    </div>
-
-    <!-- STATS -->
-    <section class="stats" aria-label="Key stats">
-      <div class="stat">
-        <b class="stat-num" data-count="6" data-suffix="+">0</b>
-        <span>Projects shipped</span>
-      </div>
-      <div class="stat">
-        <b class="stat-num" data-count="12" data-suffix="+">0</b>
-        <span>Technologies</span>
-      </div>
-      <div class="stat">
-        <b class="stat-num" data-count="3.38" data-decimals="2">0</b>
-        <span>CGPA / 4.00</span>
-      </div>
-      <div class="stat">
-        <b class="stat-num" data-count="1" data-prefix="★ ">0</b>
-        <span>Best-Dev award</span>
-      </div>
-      <div class="stat">
-        <b class="stat-num" data-count="8">0</b>
-        <span>Google certifications</span>
+      <div class="wrap section-foot">
+        <span>Google-certified · Flutter-certified</span>
+        <a href="#snapshot" class="foot-link">Scroll to explore ↓</a>
       </div>
     </section>
 
-    <!-- SELECTED WORK -->
-    <section class="work" id="work">
-      <div class="work-inner">
-        <div class="work-head">
+    <!-- ═════════ 01 SNAPSHOT ═════════ -->
+    <section class="section compact" id="snapshot">
+      <div class="wrap section-body">
+        <div class="solve-head">
           <div>
-            <p class="label">SELECTED WORK</p>
-            <h2 class="section-title">Things I've built.</h2>
+            <p class="kicker reveal">A quick snapshot</p>
+            <h2 class="h2 reveal">Built with intention.</h2>
           </div>
-          <a href="#contact" class="link-arrow">Start a project <span class="arrow">→</span></a>
+          <p class="lead reveal">Five numbers — and what each one actually means for your project.</p>
         </div>
 
-        <a class="work-showcase" href="project.html?id=event-management" aria-label="Featured project showcase">
-          <img src="projects/showcase.jpg" alt="Showcase of Muhammad Ali Saeed's app projects" loading="lazy" />
-          <span class="showcase-tag">Featured · Tap to explore case studies</span>
-        </a>
-
-        <!-- Mobile apps — featured experiences -->
-        <div class="mx-head">
-          <p class="mx-eyebrow">FEATURED WORK</p>
-          <h3 class="mx-title">Mobile Experiences</h3>
-          <p class="mx-sub">Thoughtfully crafted mobile applications designed to solve real-world problems through intuitive user experiences.</p>
-          <span class="mx-rule" aria-hidden="true"></span>
-        </div>
-
-        <div class="mcards">
-          <article class="mcard">
-            <a class="mcard-inner" href="project.html?id=event-management" aria-label="Event Management App — view case study">
-              <div class="mcard-stage">
-                <div class="mphone">
-                  <img src="projects/event_management.jpg" alt="Event Management app — calendar view" loading="lazy" />
-                </div>
-                <span class="mcard-view">View case study <span aria-hidden="true">→</span></span>
-              </div>
-              <div class="mcard-body">
-                <div class="mcard-index"><span>01</span><i aria-hidden="true"></i></div>
-                <div class="mcard-head">
-                  <h4>Event Management</h4>
-                  <span class="mcard-cat">Productivity App</span>
-                </div>
-                <p class="mcard-desc">Discover, plan and vote on events with a shared calendar, smart filters and one-tap add to your personal calendar.</p>
-                <div class="mcard-tags"><span>Flutter</span><span>Firebase</span><span>Dart</span></div>
-              </div>
-            </a>
-          </article>
-
-          <article class="mcard">
-            <a class="mcard-inner" href="project.html?id=newzler" aria-label="Newzler — view case study">
-              <div class="mcard-stage">
-                <div class="mphone">
-                  <img src="projects/newzler.jpg" alt="Newzler app — news feed" loading="lazy" />
-                </div>
-                <span class="mcard-view">View case study <span aria-hidden="true">→</span></span>
-              </div>
-              <div class="mcard-body">
-                <div class="mcard-index"><span>02</span><i aria-hidden="true"></i></div>
-                <div class="mcard-head">
-                  <h4>Newzler</h4>
-                  <span class="mcard-cat">News &amp; Media</span>
-                </div>
-                <p class="mcard-desc">A modern news reader with a personalised feed, trending headlines, in-app video and topic &amp; language controls.</p>
-                <div class="mcard-tags"><span>React Native</span><span>News API</span><span>JavaScript</span></div>
-              </div>
-            </a>
-          </article>
-
-          <article class="mcard">
-            <a class="mcard-inner" href="project.html?id=karyana-store" aria-label="Karyana Store — view case study">
-              <div class="mcard-stage">
-                <div class="mphone">
-                  <img src="projects/karyana_store.jpg" alt="Karyana Store app — product catalog" loading="lazy" />
-                </div>
-                <span class="mcard-view">View case study <span aria-hidden="true">→</span></span>
-              </div>
-              <div class="mcard-body">
-                <div class="mcard-index"><span>03</span><i aria-hidden="true"></i></div>
-                <div class="mcard-head">
-                  <h4>Karyana Store</h4>
-                  <span class="mcard-cat">E-Commerce</span>
-                </div>
-                <p class="mcard-desc">A seamless grocery shopping experience — browse by category, place bulk orders and check out, all priced in PKR.</p>
-                <div class="mcard-tags"><span>Flutter</span><span>Firebase</span><span>Payments</span></div>
-              </div>
-            </a>
-          </article>
-        </div>
-
-        <!-- Web platforms -->
-        <div class="group-head">
-          <p class="group-label">WEB PLATFORMS</p>
-          <span class="group-tag">Responsive Web</span>
-        </div>
-        <div class="projects projects--web">
-          <article class="project">
-            <a class="device browser p4" href="project.html?id=nova-cinema" aria-label="Nova Cinema case study">
-              <span class="chrome"><i></i><i></i><i></i><b>novacinema.app</b></span>
-              <span class="device-cta">View case study →</span>
-            </a>
-            <div class="project-row">
-              <span class="project-num">04</span>
-              <div class="project-info">
-                <h3>Nova Cinema</h3>
-                <p>Movie streaming platform</p>
-                <span class="tech">React · Node · MongoDB</span>
-              </div>
-              <span class="arrow">→</span>
-            </div>
-          </article>
-
-          <article class="project">
-            <a class="device browser p5" href="project.html?id=finance-tracker" aria-label="Finance Tracker case study">
-              <span class="chrome"><i></i><i></i><i></i><b>financetracker.app</b></span>
-              <span class="device-cta">View case study →</span>
-            </a>
-            <div class="project-row">
-              <span class="project-num">05</span>
-              <div class="project-info">
-                <h3>Finance Tracker</h3>
-                <p>Personal finance dashboard</p>
-                <span class="tech">Charts · Dashboard</span>
-              </div>
-              <span class="arrow">→</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="experience" id="experience">
-      <p class="label">EXPERIENCE &amp; EDUCATION</p>
-      <h2 class="section-title">A short track record.</h2>
-
-      <div class="exp-list">
-        <div class="exp-item">
-          <div class="exp-when">
-            <span>Mar 2026</span>
-            <span class="exp-place">The Sky Coaching</span>
-          </div>
-          <div class="exp-what">
-            <h3>Flutter App Development — Certified</h3>
-            <p class="exp-org">Skypulse Solution · The Sky Coaching</p>
-            <p>Completed a focused Flutter App Development course covering production-grade mobile architecture and state management.</p>
-            <a class="cert-link" href="certificates/flutter-course.jpg" data-lightbox
-               data-title="Course Completion Certificate — Flutter App Development · The Sky Coaching / Skypulse Solution (Mar 2026)">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.2 12.5 7 22l5-3 5 3-1.2-9.5"/></svg>
-              View certificate
-            </a>
-          </div>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-when">
-            <span>Jul — Aug 2025</span>
-            <span class="exp-place">Islamabad</span>
-          </div>
-          <div class="exp-what">
-            <h3>Lead Intern Developer</h3>
-            <p class="exp-org">DevelopersHub Corporation</p>
-            <p>
-              Led a team of interns building scalable mobile and web applications.
-              <strong>Awarded Best Performance</strong> for Back-End Development during the
-              6-week program, applying agile practices to ship high-quality solutions.
-            </p>
-            <a class="cert-link" href="certificates/backend-internship.jpg" data-lightbox
-               data-title="Certificate of Achievement — Best Award, Back-End Development · DevelopersHub Corporation (Jul–Aug 2025)">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.2 12.5 7 22l5-3 5 3-1.2-9.5"/></svg>
-              View certificate
-            </a>
-          </div>
-        </div>
-
-        <div class="exp-item">
-          <div class="exp-when">
-            <span>Enrolled</span>
-            <span class="exp-place">Rawalpindi</span>
-          </div>
-          <div class="exp-what">
-            <h3>BS in Computer Science</h3>
-            <p class="exp-org">Arid Agriculture University · CGPA 3.38 / 4.00</p>
-            <p>Data Structures &amp; Algorithms, OOP, Databases, Software Engineering, and Mobile &amp; Web Application Development.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section class="certs" id="certifications">
-      <div class="certs-head">
-        <p class="label">CREDENTIALS</p>
-        <h2 class="section-title">Certified — and applied.</h2>
-        <p class="certs-sub">
-          Every certification below was chosen to make the mobile work stronger, not to point
-          somewhere else — analytics sharpens how I model and read the data my apps produce, and
-          decide what to build next.
-        </p>
-      </div>
-
-      <!-- Google Data Analytics — journey card -->
-      <div class="jcard" id="gjourney">
-        <div class="jcard-top">
-          <span class="jcard-logo" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.2-2.2H12v4h6.6c-.1 1.1-.9 2.8-2.5 3.9l3.8 3c2.3-2.1 3.6-5.2 3.6-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.8-3c-1 .7-2.4 1.2-4.2 1.2-3.2 0-5.9-2.1-6.8-5l-4 3.1C3.2 21.3 7.3 24 12 24z"/><path fill="#FBBC05" d="M5.2 14.3a7.4 7.4 0 0 1 0-4.6l-4-3.1a12 12 0 0 0 0 10.8l4-3.1z"/><path fill="#EA4335" d="M12 4.7c2.3 0 3.8 1 4.7 1.8l3.4-3.3C18 1.2 15.2 0 12 0 7.3 0 3.2 2.7 1.2 6.6l4 3.1C6.1 6.8 8.8 4.7 12 4.7z"/></svg>
-          </span>
-          <div class="jcard-info">
-            <h3>Google Professional Data Analytics</h3>
-            <p class="jcard-sub">Google × Coursera</p>
-            <div class="jcard-meta">
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Issued Jul 2026</span>
-              <span class="jcard-sep" aria-hidden="true">•</span>
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> 8 Courses</span>
-            </div>
-          </div>
-          <span class="jcard-badge" aria-hidden="true"><b>8</b><i>Courses</i></span>
-        </div>
-        <p class="jcard-desc">Learned how to transform raw data into meaningful product decisions — and applied these concepts directly while building my Flutter applications.</p>
-        <button class="jcard-toggle" id="journeyToggle" aria-expanded="false" aria-controls="journeyPanel">
-          <svg class="jt-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          <span class="jt-label">Explore Journey</span>
-        </button>
-
-        <div class="jcard-journey" id="journeyPanel" role="region" aria-label="Course journey">
-          <div class="jcard-journey-inner">
-            <ol class="jtimeline">
-              <li class="jstep">
-                <span class="jstep-node" aria-hidden="true"></span>
-                <div class="jstep-body"><h4>Foundations</h4><p>Data, Data, Everywhere</p></div>
-                <a class="jstep-verify" href="https://coursera.org/verify/X90ASRDPBFJF" target="_blank" rel="noopener noreferrer">Verify</a>
-              </li>
-              <li class="jstep">
-                <span class="jstep-node" aria-hidden="true"></span>
-                <div class="jstep-body"><h4>Ask Questions</h4><p>Ask Questions to Make Data-Driven Decisions</p></div>
-                <a class="jstep-verify" href="https://coursera.org/verify/MZ2W6IH3IBFF" target="_blank" rel="noopener noreferrer">Verify</a>
-              </li>
-              <li class="jstep">
-                <span class="jstep-node" aria-hidden="true"></span>
-                <div class="jstep-body"><h4>Data Preparation</h4><p>Prepare Data for Exploration</p></div>
-                <a class="jstep-verify" href="https://coursera.org/verify/4S5BUFIYN9WY" target="_blank" rel="noopener noreferrer">Verify</a>
-              </li>
-              <li class="jstep">
-                <span class="jstep-node" aria-hidden="true"></span>
-                <div class="jstep-body"><h4>Data Cleaning</h4><p>Process Data from Dirty to Clean</p></div>
-                <a class="jstep-verify" href="https://coursera.org/verify/C4DOAEVJA3JO" target="_blank" rel="noopener noreferrer">Verify</a>
-              </li>
-              <li class="jstep">
-                <span class="jstep-node" aria-hidden="true"></span>
-                <div class="jstep-body"><h4>Analysis</h4><p>Analyze Data to Answer Questions</p></div>
-                <a class="jstep-verify" href="https://coursera.org/verify/ID97Q1F8VYFK" target="_blank" rel="noopener noreferrer">Verify</a>
-              </li>
-              <li class="jstep">
-                <span class="jstep-node" aria-hidden="true"></span>
-                <div class="jstep-body"><h4>Visualisation</h4><p>Share Data Through the Art of Visualization</p></div>
-                <a class="jstep-verify" href="https://coursera.org/verify/GGYUXQWQ4BB1" target="_blank" rel="noopener noreferrer">Verify</a>
-              </li>
-              <li class="jstep">
-                <span class="jstep-node" aria-hidden="true"></span>
-                <div class="jstep-body"><h4>Python</h4><p>Introduction to Data Analysis Using Python</p></div>
-                <a class="jstep-verify" href="https://coursera.org/verify/PD50QTRD4OXN" target="_blank" rel="noopener noreferrer">Verify</a>
-              </li>
-              <li class="jstep">
-                <span class="jstep-node" aria-hidden="true"></span>
-                <div class="jstep-body"><h4>Capstone</h4><p>Data Analytics Capstone: Complete a Case Study</p></div>
-                <a class="jstep-verify" href="https://coursera.org/verify/WCVCH75OXJQ3" target="_blank" rel="noopener noreferrer">Verify</a>
-              </li>
-              <li class="jstep jstep--applied">
-                <span class="jstep-node jstep-node--star" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
-                </span>
-                <div class="jstep-body jstep-applied-body">
-                  <h4>Applied in Flutter Projects</h4>
-                  <div class="japplied-chips">
-                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5M3 12a9 3 0 0 0 18 0"/></svg> Firestore data modelling</span>
-                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="13" y="8" width="3" height="10"/></svg> Dashboard analytics</span>
-                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg> User engagement tracking</span>
-                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9v9z"/><path d="M12 3a9 9 0 0 1 9 9h-9z"/></svg> Chart visualisations</span>
-                    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg> Feature decision making</span>
-                  </div>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <!-- Development & academic credentials -->
-      <h3 class="certs-sub-head">Development &amp; academic credentials</h3>
-      <div class="cert-cards">
-        <a class="ccard" href="certificates/flutter-course.jpg" data-lightbox
-           data-title="Course Completion Certificate — Flutter App Development · The Sky Coaching / Skypulse Solution (Mar 2026)">
-          <span class="ccard-tag ccard-tag--core">Core</span>
-          <h4>Flutter App Development</h4>
-          <p class="ccard-org">The Sky Coaching · Skypulse Solution</p>
-          <p class="ccard-desc">Production-grade mobile architecture and state management — the foundation the four shipped apps are built on.</p>
-          <span class="ccard-foot">Mar 2026 <i>View certificate →</i></span>
-        </a>
-
-        <a class="ccard" href="certificates/backend-internship.jpg" data-lightbox
-           data-title="Certificate of Achievement — Best Performance Award, Back-End Development · DevelopersHub Corporation (Jul–Aug 2025)">
-          <span class="ccard-tag ccard-tag--award">★ Best Award</span>
-          <h4>Back-End Development Internship</h4>
-          <p class="ccard-org">DevelopersHub Corporation</p>
-          <p class="ccard-desc">Six-week virtual internship building REST endpoints and back-end features — recognised for exceptional performance.</p>
-          <span class="ccard-foot">Jul – Aug 2025 <i>View certificate →</i></span>
-        </a>
-
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="skills" id="skills">
-      <div class="skills-head">
-        <p class="label">TECHNOLOGY</p>
-        <h2 class="section-title">Skills &amp; Technologies.</h2>
-        <p class="skills-sub">The tools and technologies I use to design, build, and ship scalable products.</p>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-card">
-          <span class="skill-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </span>
-          <h4>Languages</h4>
-          <p class="skill-desc">Core programming languages I rely on to build robust and efficient solutions.</p>
-          <ul class="skill-list">
-            <li class="primary"><span class="dot"></span><span class="name">Dart</span><span class="tag">Primary</span></li>
-            <li class="primary"><span class="dot"></span><span class="name">JavaScript</span><span class="tag">Primary</span></li>
-            <li><span class="dot"></span><span class="name">Python</span></li>
-            <li><span class="dot"></span><span class="name">Java</span></li>
-            <li><span class="dot"></span><span class="name">C++</span></li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.84Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
-          </span>
-          <h4>Frameworks</h4>
-          <p class="skill-desc">Modern frameworks that help me build performant, scalable, and maintainable applications.</p>
-          <ul class="skill-list">
-            <li class="primary"><span class="dot"></span><span class="name">Flutter</span><span class="tag">Primary</span></li>
-            <li class="primary"><span class="dot"></span><span class="name">React</span><span class="tag">Primary</span></li>
-            <li><span class="dot"></span><span class="name">React Native</span></li>
-            <li><span class="dot"></span><span class="name">Node.js</span></li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          </span>
-          <h4>Tools</h4>
-          <p class="skill-desc">Developer tools and platforms that streamline development and improve velocity.</p>
-          <ul class="skill-list">
-            <li class="primary"><span class="dot"></span><span class="name">Firebase</span><span class="tag">Primary</span></li>
-            <li class="primary"><span class="dot"></span><span class="name">Git</span><span class="tag">Primary</span></li>
-            <li><span class="dot"></span><span class="name">GitHub</span></li>
-            <li><span class="dot"></span><span class="name">Docker</span></li>
-            <li><span class="dot"></span><span class="name">Figma</span></li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/><line x1="12" y1="1.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22.5" y2="12"/></svg>
-          </span>
-          <h4>Focus Areas</h4>
-          <p class="skill-desc">The domains I focus on to deliver impactful digital products.</p>
-          <ul class="skill-list">
-            <li class="primary"><span class="dot"></span><span class="name">Mobile Development</span><span class="tag">Primary</span></li>
-            <li class="primary"><span class="dot"></span><span class="name">Product Design</span><span class="tag">Primary</span></li>
-            <li><span class="dot"></span><span class="name">APIs</span></li>
-            <li><span class="dot"></span><span class="name">In-App Analytics</span><span class="tag">Certified</span></li>
-            <li><span class="dot"></span><span class="name">App Security &amp; Auth</span><span class="tag">Certified</span></li>
-            <li><span class="dot"></span><span class="name">Responsive Systems</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section class="process" id="process">
-      <p class="label">HOW I WORK</p>
-      <h2 class="section-title">My process.</h2>
-      <div class="process-steps">
-        <div class="process-step">
-          <span class="process-num">01</span>
-          <h3>Discovery</h3>
-          <p>Understand the problem, goals and users, then define scope and what success looks like.</p>
-        </div>
-        <div class="process-step">
-          <span class="process-num">02</span>
-          <h3>Design</h3>
-          <p>Wireframes and clean UI that balance clarity with a polished, modern feel.</p>
-        </div>
-        <div class="process-step">
-          <span class="process-num">03</span>
-          <h3>Build</h3>
-          <p>Maintainable, well-structured code with the right architecture for the job.</p>
-        </div>
-        <div class="process-step">
-          <span class="process-num">04</span>
-          <h3>Test</h3>
-          <p>Real-device testing, edge cases and performance tuning before anything ships.</p>
-        </div>
-        <div class="process-step">
-          <span class="process-num">05</span>
-          <h3>Launch</h3>
-          <p>Deploy, monitor and iterate based on real feedback and usage.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT + CONNECT -->
-    <section class="about-connect">
-      <div class="about" id="about">
-        <p class="label">ABOUT ME</p>
-        <h2 class="block-title">I'm a developer who values<br/>simplicity and purpose.</h2>
-        <p class="about-body">
-          With a background in computer science and hands-on experience leading an
-          internship team, I help turn complex problems into clean, reliable software —
-          from real-time apps to e-commerce and event platforms. I care about
-          maintainable code and experiences that feel effortless.
-        </p>
-        <a href="#contact" class="link-arrow dark">Let's work together <span class="arrow">→</span></a>
-      </div>
-
-      <div class="connect" id="contact">
-        <p class="label">LET'S CONNECT</p>
-        <h2 class="block-title">Have a project in mind?<br/>I'd love to hear about it.</h2>
-        <a href="mailto:alisaeed795555@gmail.com" class="email-link">
-          alisaeed795555@gmail.com <span class="arrow">→</span>
-        </a>
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/alisaeed-dev/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V9h3v10zM6.5 7.7a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-5.3c0-1.3-.5-2.1-1.6-2.1-.9 0-1.4.6-1.6 1.2-.1.2-.1.5-.1.8V19h-3V9h3v1.3a3 3 0 0 1 2.7-1.5c2 0 3.2 1.3 3.2 4V19z"/></svg>
+        <div class="stats">
+          <a class="stat reveal" href="#work">
+            <b class="stat-n" data-count="8">8</b>
+            <span class="stat-l">Flutter projects built</span>
+            <p class="stat-why">From finance and events to AI — each one taken from idea to a working app.</p>
+            <span class="stat-go">See the apps <span class="arr" aria-hidden="true">→</span></span>
           </a>
-          <a href="https://github.com/ALISAEED-1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+          <a class="stat reveal" href="#skills">
+            <b class="stat-n" data-count="12" data-suffix="+">12+</b>
+            <span class="stat-l">Technologies</span>
+            <p class="stat-why">So I pick the right tool — not the only one I know.</p>
+            <span class="stat-go">See the toolkit <span class="arr" aria-hidden="true">→</span></span>
           </a>
-          <a href="tel:+923125359405" class="copy-phone" data-phone="+92 312 5359405" aria-label="Call +92 312 5359405 — click to copy" title="+92 312 5359405">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <a class="stat reveal" href="#track">
+            <b class="stat-n" data-count="3.38" data-decimals="2">3.38</b>
+            <span class="stat-l">CGPA / 4.00</span>
+            <p class="stat-why">Solid CS fundamentals: algorithms, data and architecture.</p>
+            <span class="stat-go">See education <span class="arr" aria-hidden="true">→</span></span>
+          </a>
+          <a class="stat reveal" href="#track">
+            <b class="stat-n"><span class="star">★</span><span data-count="1">1</span></b>
+            <span class="stat-l">Best-performance award</span>
+            <p class="stat-why">Back-End internship at DevelopersHub — while leading the team.</p>
+            <span class="stat-go">See the award <span class="arr" aria-hidden="true">→</span></span>
+          </a>
+          <a class="stat reveal" href="#track">
+            <b class="stat-n" data-count="2">2</b>
+            <span class="stat-l">Google Professional Certificates</span>
+            <p class="stat-why">AI and Data Analytics — applied to the apps I build.</p>
+            <span class="stat-go">See certificates <span class="arr" aria-hidden="true">→</span></span>
           </a>
         </div>
       </div>
+      <div class="wrap section-foot"><span>A quick snapshot</span><span class="foot-num">01 / 06</span></div>
     </section>
+
+    <!-- ═════════ 02 WORK — APP STAGE ═════════ -->
+    <section class="section" id="work">
+      <div class="wrap section-body">
+        <div class="head-row">
+          <div>
+            <p class="kicker reveal">Selected work</p>
+            <h2 class="h2 reveal">Things I've built.</h2>
+            <p class="lead reveal">Seven Flutter apps, each built around a real problem. Pick one to see it running — then open its case file for the problem, the fix and the bugs I hit.</p>
+          </div>
+          <div class="head-actions reveal">
+            <a href="https://github.com/ALISAEED-1" target="_blank" rel="noopener" class="btn btn-ghost btn-sm fx"><span class="roll"><span data-text="All code on GitHub">All code on GitHub</span></span> <span class="arr" aria-hidden="true">↗</span></a>
+            <a href="#contact" class="btn btn-dark btn-sm fx" data-magnetic>Start a project <span class="arr" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="showcase reveal">
+          <div class="app-tabs" role="tablist" aria-label="Apps" id="appTabs"></div>
+
+          <div class="stage" id="stage" role="tabpanel" aria-live="polite">
+            <span class="stage-blob sb1" aria-hidden="true"></span>
+            <span class="stage-blob sb2" aria-hidden="true"></span>
+            <div class="phones" id="phones">
+              <div class="ph ph-l"><img alt="" /></div>
+              <div class="ph ph-r"><img alt="" /></div>
+              <div class="ph ph-c">
+                <img class="scr on" alt="" />
+                <img class="scr" alt="" />
+              </div>
+              <div class="art-stack">
+                <img class="art" alt="" />
+                <img class="art" alt="" />
+              </div>
+            </div>
+            <div class="stage-info" id="stageInfo"></div>
+            <div class="stage-dots" id="stageDots" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <article class="beyond reveal">
+          <div class="beyond-text">
+            <p class="si-k">Beyond mobile · AI · Microsoft hackathon</p>
+            <h3 class="si-title">MatchMind</h3>
+            <p class="beyond-desc">An AI broadcast booth for football. A team of specialised agents turns a live stream of match events into stats, “why it matters” insight cards, commentary and a full-time recap — personalised for fans or analysts, in English, Urdu or Arabic.</p>
+            <div class="si-chips">
+              <span class="chip">Multi-agent orchestration</span><span class="chip">MCP server</span><span class="chip">On-device LLM</span><span class="chip">Flutter web</span>
+            </div>
+            <div class="si-actions">
+              <a class="btn btn-dark btn-sm fx" href="https://alisaeed-1.github.io/matchmind/" target="_blank" rel="noopener" data-magnetic>Live demo <span class="arr" aria-hidden="true">↗</span></a>
+              <a class="btn btn-ghost btn-sm fx" href="https://youtu.be/4vEOSFYaHo4" target="_blank" rel="noopener"><span class="roll"><span data-text="Demo video">Demo video</span></span> <span class="arr" aria-hidden="true">↗</span></a>
+              <a class="mini-link" href="https://github.com/ALISAEED-1/matchmind" target="_blank" rel="noopener">Code ↗</a>
+            </div>
+          </div>
+          <div class="beyond-visual" aria-hidden="true">
+            <div class="mm-pitch"><i class="mm-half"></i><i class="mm-circle"></i><i class="mm-box l"></i><i class="mm-box r"></i><span class="mm-ball"></span></div>
+            <div class="mm-agents">
+              <span>stats</span><b>→</b><span>insight</span><b>→</b><span>narrator</span><b>→</b><span>personalizer</span>
+            </div>
+            <div class="mm-card mm-c1"><span class="mm-min">67′ · Insight</span><b>Momentum swing</b><p>Pressure climbs after the double substitution.</p></div>
+            <div class="mm-card mm-c2"><span class="mm-min">EN · UR · AR</span><b>Fan view</b></div>
+          </div>
+        </article>
+      </div>
+      <div class="wrap section-foot"><span>Mobile experiences · built with Flutter</span><span class="foot-num">02 / 06</span></div>
+    </section>
+
+    <!-- ═════════ 03 HOW I SOLVE ═════════ -->
+    <section class="section" id="solve">
+      <div class="wrap section-body">
+        <div class="solve-head">
+          <div>
+            <p class="kicker reveal">How I solve</p>
+            <h2 class="h2 reveal">Bring me the hard part.</h2>
+          </div>
+          <p class="lead reveal">Pick the problem that sounds most like yours. Watch it go from messy to solved — and see where I've already done it.</p>
+        </div>
+
+        <div class="notes reveal" role="tablist" aria-label="Common problems" id="solverList"></div>
+        <div class="board reveal" role="tabpanel" id="solverPanel" aria-live="polite"></div>
+
+        <ol class="steps" id="steps">
+          <li><span class="step-n">01</span><b>Understand</b><span>The real problem, the users, and what "done" looks like.</span></li>
+          <li><span class="step-n">02</span><b>Design</b><span>The shortest flow from opening the app to getting value.</span></li>
+          <li><span class="step-n">03</span><b>Build</b><span>One Flutter codebase, structured so it's easy to change.</span></li>
+          <li><span class="step-n">04</span><b>Test</b><span>Real devices, edge cases and slow networks — not just the happy path.</span></li>
+          <li><span class="step-n">05</span><b>Hand over</b><span>Clean code, a release-ready build and notes you can keep using.</span></li>
+        </ol>
+      </div>
+      <div class="wrap section-foot"><span>Problem → product</span><span class="foot-num">03 / 06</span></div>
+    </section>
+
+    <!-- ═════════ 04 TRACK RECORD ═════════ -->
+    <section class="section compact" id="track">
+      <div class="wrap section-body">
+        <div class="solve-head">
+          <div>
+            <p class="kicker reveal">Track record &amp; credentials</p>
+            <h2 class="h2 reveal">Every step adds a piece.</h2>
+          </div>
+          <p class="lead reveal">From a CS degree to leading a team to certifications — a short record, moving fast in one direction: better mobile apps.</p>
+        </div>
+
+        <ol class="tl" id="timeline">
+          <li class="tl-item reveal">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-card">
+              <div class="tl-top"><span class="tl-tag t-edu">Education</span><span class="tl-date">Enrolled</span></div>
+              <h3>BS Computer Science</h3>
+              <p class="tl-org">Arid Agriculture University</p>
+              <p class="tl-desc">CGPA <b>3.38 / 4.00</b> — DSA, OOP, databases, software engineering, mobile &amp; web development.</p>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-card">
+              <div class="tl-top"><span class="tl-tag t-pro">Professional</span><span class="tl-date">Jul – Aug 2025</span></div>
+              <h3>Lead Intern Developer</h3>
+              <p class="tl-org">DevelopersHub Corporation</p>
+              <p class="tl-award">★ Best Performance — Back-End</p>
+              <p class="tl-desc">Led a team of interns building mobile and web apps across a 6-week program.</p>
+              <div class="tl-actions"><a class="mini-btn fx" href="certificates/backend-internship.jpg" data-lightbox data-title="Back-End Development Internship — DevelopersHub">View certificate</a></div>
+            </div>
+          </li>
+          <li class="tl-item tl-core reveal">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-card">
+              <div class="tl-top"><span class="tl-tag t-core">Core · Flutter</span><span class="tl-date">Mar 2026</span></div>
+              <h3>Flutter App Development</h3>
+              <p class="tl-org">The Sky Coaching · Skypulse Solution</p>
+              <p class="tl-desc">Production-grade architecture and state management — the backbone of every app above.</p>
+              <div class="tl-actions"><a class="mini-btn fx" href="certificates/flutter-course.jpg" data-lightbox data-title="Flutter App Development — The Sky Coaching">View certificate</a></div>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-card">
+              <div class="tl-top"><span class="tl-tag t-cert"><svg width="12" height="12"><use href="#g-logo"/></svg> Google</span><span class="tl-date">Aug 2026</span></div>
+              <h3>Google Data Analytics</h3>
+              <p class="tl-org">Professional Certificate · Coursera</p>
+              <p class="tl-desc"><b class="ok">Applied →</b> event tracking, Firestore data modelling and dashboards.</p>
+              <div class="tl-actions">
+                <a class="mini-btn fx" href="certificates/google-data-analytics.pdf" target="_blank" rel="noopener">View</a>
+                <a class="mini-link" href="https://coursera.org/verify/professional-cert/YMAWW8CKJDS2" target="_blank" rel="noopener">Verify ↗</a>
+              </div>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-card">
+              <div class="tl-top"><span class="tl-tag t-cert"><svg width="12" height="12"><use href="#g-logo"/></svg> Google</span><span class="tl-date">Sep 2026</span></div>
+              <h3>Google AI</h3>
+              <p class="tl-org">Professional Certificate · Coursera</p>
+              <p class="tl-desc"><b class="ok">Applied →</b> AI-assisted prototyping, app building and deployment.</p>
+              <div class="tl-actions">
+                <a class="mini-btn fx" href="certificates/google-ai.pdf" target="_blank" rel="noopener">View</a>
+                <a class="mini-link" href="https://coursera.org/verify/professional-cert/BE5F56PJSGSH" target="_blank" rel="noopener">Verify ↗</a>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="wrap section-foot"><span>Track record &amp; credentials</span><span class="foot-num">04 / 06</span></div>
+    </section>
+
+    <!-- ═════════ 05 SKILLS ═════════ -->
+    <section class="section compact" id="skills">
+      <div class="wrap section-body">
+        <div class="skills-grid">
+          <div class="skills-intro">
+            <p class="kicker reveal">Capabilities</p>
+            <h2 class="h2 reveal">Tools for thoughtful work.</h2>
+            <p class="lead reveal">A practical toolkit for turning complex ideas into simple, reliable products.</p>
+            <div class="legend reveal">
+              <span class="sk sk-p">Primary</span>
+              <span class="sk sk-c">Certified</span>
+              <span class="sk">Working knowledge</span>
+            </div>
+          </div>
+
+          <div class="skill-rows">
+            <div class="srow reveal">
+              <div class="srow-h"><span class="srow-n">01</span><h3>Languages</h3></div>
+              <div class="chips"><span class="sk sk-p">Dart</span><span class="sk">JavaScript</span><span class="sk">TypeScript</span><span class="sk">Python</span><span class="sk">SQL</span><span class="sk">C++</span></div>
+            </div>
+            <div class="srow reveal">
+              <div class="srow-h"><span class="srow-n">02</span><h3>Frameworks</h3></div>
+              <div class="chips"><span class="sk sk-p">Flutter</span><span class="sk sk-p">Riverpod</span><span class="sk">Provider</span><span class="sk">React Native</span><span class="sk">Node.js</span></div>
+            </div>
+            <div class="srow reveal">
+              <div class="srow-h"><span class="srow-n">03</span><h3>Tools</h3></div>
+              <div class="chips"><span class="sk sk-p">Firebase</span><span class="sk sk-p">Supabase</span><span class="sk">Git &amp; GitHub</span><span class="sk">Android Studio</span><span class="sk">Postman</span><span class="sk">Figma</span></div>
+            </div>
+            <div class="srow reveal">
+              <div class="srow-h"><span class="srow-n">04</span><h3>Focus areas</h3></div>
+              <div class="chips"><span class="sk sk-p">Mobile development</span><span class="sk sk-p">Product design</span><span class="sk sk-c">In-app analytics</span><span class="sk sk-c">AI-assisted building</span><span class="sk">APIs</span><span class="sk">App security &amp; auth</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrap section-foot"><span>Skills &amp; focus areas</span><span class="foot-num">05 / 06</span></div>
+    </section>
+
+    <!-- ═════════ 06 CONTACT ═════════ -->
+    <section class="section" id="contact">
+      <div class="wrap section-body center-y">
+        <div class="contact-grid">
+          <div class="about reveal">
+            <p class="kicker">About me</p>
+            <h2 class="h3">I'm a developer who values simplicity and purpose.</h2>
+            <p>With a background in computer science and hands-on experience leading an internship team, I turn complex problems into clean, reliable software — from real-time apps to e-commerce and event platforms. I care about maintainable code and experiences that feel effortless.</p>
+            <a href="#solve" class="text-link dark">See how I solve problems <span class="arr" aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="connect reveal">
+            <p class="kicker">Let's connect</p>
+            <h2 class="h3">Have a hard problem?<br>Tell me the messy version.</h2>
+
+            <form class="problem-form" id="problemForm">
+              <label for="problemText">What's the hard part?</label>
+              <textarea id="problemText" rows="3" maxlength="600" placeholder="e.g. Our delivery app is slow and users drop off at checkout."></textarea>
+              <div class="form-row">
+                <span class="form-hint">Opens your email app with this pre-filled.</span>
+                <button class="btn btn-dark btn-sm fx send-btn" type="submit" data-magnetic>Send it to Ali <span class="arr" aria-hidden="true">→</span></button>
+              </div>
+            </form>
+
+            <div class="email-row">
+              <a class="email" href="mailto:alisaeed795555@gmail.com">alisaeed795555@gmail.com</a>
+              <button class="copy-btn fx" id="copyEmail" type="button" data-copy="alisaeed795555@gmail.com">Copy</button>
+            </div>
+            <div class="socials">
+              <a class="social fx" href="https://www.linkedin.com/in/alisaeed-dev/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+              <a class="social fx" href="https://github.com/ALISAEED-1" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+              <a class="social fx" href="tel:+923125359405">+92 312 5359405</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="wrap site-foot">
+        <span>© <span id="year">2026</span> Muhammad Ali Saeed</span>
+        <span>Designed &amp; built from scratch</span>
+        <a href="#home" class="foot-link">Back to top ↑</a>
+      </footer>
+    </section>
+
   </main>
 
-  <!-- Certificate lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer" hidden>
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close certificate">&times;</button>
-    <figure class="lightbox-fig">
-      <img id="lightboxImg" src="" alt="" />
-      <figcaption id="lightboxCap"></figcaption>
+  <!-- ═════════ CASE FILE DRAWER ═════════ -->
+  <div class="drawer" id="drawer" hidden>
+    <div class="drawer-backdrop" data-close></div>
+    <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="caseTitle" tabindex="-1">
+      <div class="drawer-top">
+        <span class="mono">Case file</span>
+        <button class="drawer-close" data-close aria-label="Close case file">✕</button>
+      </div>
+      <div class="drawer-body" id="drawerBody"></div>
+    </aside>
+  </div>
+
+  <!-- ═════════ LIGHTBOX ═════════ -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <figure>
+      <img id="lbImg" src="" alt="" />
+      <figcaption id="lbCap"></figcaption>
     </figure>
   </div>
 
-  <footer class="footer">
-    <p>© <span id="year"></span> Muhammad Ali Saeed</p>
-    <p class="footer-built">Designed &amp; built from scratch</p>
-    <a href="#home" class="footer-top">Back to top ↑</a>
-  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="projects-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

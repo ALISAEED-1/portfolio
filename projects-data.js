@@ -11,6 +11,7 @@ window.PROJECTS = {
     type: "mobile",
     badge: "Featured Project",
     hero: "projects/event_management.jpg",
+    github: "https://github.com/ALISAEED-1/Event-Management-Mobile-Application",
     description: "A mobile app to discover, plan and vote on events — browse a shared calendar, filter by city and category, save favourites and add events straight to your personal calendar.",
     tags: ["Flutter", "Firebase", "Calendar"],
     links: { demo: "#", github: "", pdf: "" },
@@ -53,8 +54,9 @@ window.PROJECTS = {
     type: "mobile",
     badge: "Featured Project",
     hero: "projects/newzler.jpg",
+    github: "https://github.com/ALISAEED-1/NewzlerApp",
     description: "A personalised news reader — trending headlines, a tailored “My News” feed, topic categories, in-app video and search, with language preferences you control.",
-    tags: ["React Native", "News API", "Personalization"],
+    tags: ["Flutter", "News API", "Personalization"],
     links: { demo: "#", github: "", pdf: "" },
     meta: { role: "Solo Developer", duration: "4 Weeks", platform: "Android & iOS", status: "Completed", release: "2025" },
     problem: [
@@ -79,11 +81,11 @@ window.PROJECTS = {
       { img: "projects/shots/newzler-3.jpg", label: "News Feed" },
       { img: "projects/shots/newzler-4.jpg", label: "Account" }
     ],
-    stack: ["React Native", "JavaScript", "News API", "Async Storage"],
+    stack: ["Flutter", "Dart", "News API"],
     highlights: ["Personalised feed", "Trending & categories", "In-app video & search", "Language preferences"],
     challenges: [
       { c: "Delivering a relevant feed from a generic news API.", s: "Built a topic-weighting layer that filters and ranks articles by the user's selected interests." },
-      { c: "Smooth scrolling with image-heavy article lists.", s: "Added list virtualisation and lazy image loading to keep the feed at 60fps." }
+      { c: "Smooth scrolling with image-heavy article lists.", s: "Built the feed with lazily-built lists and lazy image loading to keep scrolling smooth at 60fps." }
     ],
     process: ["Research", "Wireframing", "UI Design", "Development", "Testing", "Release"],
     results: [{ n: "12+", l: "Screens" }, { n: "8+", l: "Features" }, { n: "Cross", l: "Platform" }, { n: "4", l: "Weeks" }]
@@ -95,6 +97,7 @@ window.PROJECTS = {
     type: "mobile",
     badge: "Featured Project",
     hero: "projects/karyana_store.jpg",
+    github: "https://github.com/ALISAEED-1/Karyana-Store",
     description: "An online grocery (karyana) store — browse spices, grains and pulses by category, place bulk orders, manage favourites and check out, all priced in PKR.",
     tags: ["Flutter", "Payments", "E-Commerce"],
     links: { demo: "#", github: "", pdf: "" },
@@ -129,90 +132,154 @@ window.PROJECTS = {
     ],
     process: ["Research", "Wireframing", "UI Design", "Development", "Testing", "Release"],
     results: [{ n: "12+", l: "Screens" }, { n: "10+", l: "Features" }, { n: "Android", l: "Platform" }, { n: "5", l: "Weeks" }]
+  }
+  ,
+  "finora": {
+    title: "Finora",
+    subtitle: "Personal Finance App",
+    type: "mobile",
+    hero: "projects/shots/finora-1.webp",
+    github: "https://github.com/ALISAEED-1/finora",
+    description: "A production-grade personal finance app built solo in Flutter and Firebase — accounts, budgets, bills, loans, goals and receipt scanning, written as though it were shipping.",
+    tags: ["Flutter", "Firebase", "Riverpod"],
+    metaList: [["Role", "Solo developer"], ["Codebase", "25k lines · 137 files"], ["Tests", "326 automated"], ["Build", "Signed Android release"]],
+    problem: [
+      "Most finance apps get money maths quietly wrong — floating-point amounts, currencies treated as if they all have cents, and half-finished writes.",
+      "If a failure lands between two writes, a payment can be recorded while the bill still looks unpaid — so the user pays twice."
+    ],
+    solution: {
+      intro: "Finora treats money like money: integer amounts, one atomic write per money movement, and features that keep working offline.",
+      points: ["Integer money that respects each currency's decimals", "Bills, loans and budgets updated in one atomic batch", "On-device receipt scanning with ML Kit — no keys, works offline", "Bill reminders scheduled on the phone — no server needed"]
+    },
+    features: [
+      { t: "Accounts & transactions", d: "Every expense and income, with balances that always add up." },
+      { t: "Budgets", d: "Count what you assign to a budget, not just what you tag." },
+      { t: "Bills & reminders", d: "Due dates and local reminders that survive reboots." },
+      { t: "Loans", d: "Lent or borrowed, split across principal and interest." },
+      { t: "Goals", d: "Savings goals with contributions and progress." },
+      { t: "Receipts & reports", d: "Scan receipts on-device and read clear insights." }
+    ],
+    artShots: true,
+    shots: [
+      { img: "projects/shots/finora-1.webp", label: "Balance overview" },
+      { img: "projects/shots/finora-2.webp", label: "Budgets & goals" },
+      { img: "projects/shots/finora-3.webp", label: "Insights" }
+    ],
+    stack: ["Flutter", "Dart", "Firebase", "Firestore", "Riverpod", "go_router", "ML Kit", "App Check"],
+    challenges: [
+      { c: "A Rs. 810 bill showed up as Rs. 8.10.", s: "PKR has no subunit. Every conversion now goes through a Money type that asks the currency how many decimals it really has." },
+      { c: "Release builds silently deleted the notification icon.", s: "The shrinker saw no reference to an icon named only from Dart. Confirmed by dumping the built APK, kept explicitly, and covered by a test." },
+      { c: "R8 broke reminder persistence — every alarm would vanish after a reboot.", s: "Traced a Gson TypeToken failure to R8 dropping generics, and added keep rules so scheduled reminders survive a restart." },
+      { c: "A whole screen was unreachable, and nothing logged an error.", s: "Found by tapping it on a real device: the auth guard was missing /intro. Fixed, with a test that reads the guard to keep it fixed." }
+    ],
+    results: [{ n: "25k", l: "Lines of Dart" }, { n: "326", l: "Tests" }, { n: "137", l: "Files" }, { n: "Signed", l: "Release build" }]
+  },
+
+  "you2art": {
+    title: "You2Art",
+    subtitle: "Creator & Casting Platform",
+    type: "mobile",
+    hero: "projects/shots/you2art-1.jpg",
+    github: "https://github.com/ALISAEED-1/you2art_redesign",
+    description: "A Flutter social network for the entertainment industry — artists show their work, productions post casting calls, and people connect and chat in real time. Backed by Supabase.",
+    tags: ["Flutter", "Supabase", "Social"],
+    metaList: [["Role", "Flutter developer"], ["Backend", "Supabase"], ["Sign-in", "Phone OTP"], ["Platform", "Mobile"]],
+    problem: [
+      "Actors, crews and productions find each other through scattered posts and personal contacts.",
+      "Artists need a profile that shows their work properly — photos and video, not just a CV."
+    ],
+    solution: {
+      intro: "You2Art puts the whole loop in one app: a feed, profiles, casting calls, talent search and chat.",
+      points: ["Phone-OTP sign-in with a custom keypad", "Casting calls you can browse and apply to", "Talent search and connections", "Real-time chat and notifications", "Swipeable photo and video galleries"]
+    },
+    features: [
+      { t: "Feed", d: "Share photo and text posts with your network." },
+      { t: "Casting calls", d: "Browse roles by location, type and budget — and apply." },
+      { t: "Profiles", d: "Connections, posts, activity and your work in one place." },
+      { t: "Talent search", d: "Find the right people for a production." },
+      { t: "Chat", d: "Real-time messaging between connections." },
+      { t: "Notifications", d: "Know when someone applies, connects or replies." }
+    ],
+    shots: [
+      { img: "projects/shots/you2art-1.jpg", label: "Home feed" },
+      { img: "projects/shots/you2art-2.jpg", label: "Casting calls" },
+      { img: "projects/shots/you2art-3.jpg", label: "Profile" }
+    ],
+    stack: ["Flutter", "Dart", "Supabase", "Realtime", "Phone OTP"]
+  },
+
+  "agri-expert": {
+    title: "Agri Expert",
+    subtitle: "Farmer–Expert Platform",
+    type: "mobile",
+    hero: "projects/shots/agri-2.jpg",
+    github: "https://github.com/ALISAEED-1/agri-expert",
+    description: "A Flutter app connecting farmers with agricultural experts — ask questions with photos, get expert answers, learn from training videos and chat, in English or Urdu. Backed by Supabase.",
+    tags: ["Flutter", "Supabase", "AgriTech"],
+    metaList: [["Role", "Flutter developer"], ["Backend", "Supabase"], ["Languages", "English · Urdu"], ["Platform", "Android"]],
+    problem: [
+      "Farmers lose money to middlemen and wait too long for expert advice.",
+      "Practical know-how — like how to start a tractor — is hard to find in their own language."
+    ],
+    solution: {
+      intro: "Agri Expert gives farmers a direct line to experts and a library to learn from.",
+      points: ["Questions with photos, answered by experts", "Pending vs. answered tracking", "A training video library", "Real-time chat", "Urdu support"]
+    },
+    features: [
+      { t: "Expert Q&A", d: "Farmers ask with photos; experts answer in the app." },
+      { t: "Training videos", d: "Short how-to videos, with views and comments." },
+      { t: "Expert dashboard", d: "Questions, answers, views and videos at a glance." },
+      { t: "Chat", d: "Direct, real-time conversations." },
+      { t: "Ratings & reviews", d: "Farmers rate the experts who helped them." },
+      { t: "Onboarding", d: "A clear intro, available in Urdu too." }
+    ],
+    shots: [
+      { img: "projects/shots/agri-2.jpg", label: "Questions" },
+      { img: "projects/shots/agri-3.jpg", label: "Training videos" },
+      { img: "projects/shots/agri-4.jpg", label: "Dashboard" },
+      { img: "projects/shots/agri-1.jpg", label: "Onboarding" }
+    ],
+    stack: ["Flutter", "Dart", "Supabase", "Realtime chat"]
   },
 
   "nova-cinema": {
     title: "Nova Cinema",
-    subtitle: "Movie Streaming Platform",
-    type: "web",
-    badge: "Featured Project",
-    hero: "projects/nova_cinema.jpg",
-    description: "A movie-streaming web platform with a Netflix-style browse experience — trending rows, rich detail pages, search, watch-time stats and a full account dashboard.",
-    tags: ["React", "Node", "MongoDB"],
-    links: { demo: "#", github: "", pdf: "" },
-    meta: { role: "Solo Developer", duration: "8 Weeks", platform: "Web", status: "Completed", release: "2025" },
+    subtitle: "Streaming App + Payments Backend",
+    type: "mobile",
+    hero: "projects/shots/nova-art-1.jpg",
+    github: "https://github.com/ALISAEED-1/Nova-Cinema-App",
+    github2: { label: "nova-pay backend", url: "https://github.com/ALISAEED-1/nova-pay" },
+    description: "A mobile-first Flutter streaming app — catalogue, search, video player and watchlist — backed by nova-pay, its own Node and TypeScript payments service.",
+    tags: ["Flutter", "Node.js", "TypeScript", "Postgres"],
+    metaList: [["App", "Flutter · provider"], ["Backend", "Node · TypeScript · Postgres"], ["Payments", "Stripe (test) + mock provider"], ["Currencies", "USD · EUR · PKR · INR · BDT"]],
     problem: [
-      "Building a streaming experience means handling discovery, search and user accounts together — not just a list of videos.",
-      "Users expect a polished, fast browse experience with personalised stats and watchlists."
+      "Payment flows break in quiet ways: a double-tap charges twice, or a late webhook locks out someone who already paid.",
+      "Pricing has to work in five currencies — and with wallets like JazzCash that can't be charged automatically."
     ],
     solution: {
-      intro: "Nova Cinema delivers a complete streaming front-end backed by a full Node/Mongo API, with browse, search and account management.",
-      points: ["Trending rows & rich detail pages", "Search across the full catalog", "Watch-time stats & personal lists", "Account dashboard and admin tools"]
+      intro: "The app never touches card details or decides who has paid. nova-pay does — and only after the provider confirms.",
+      points: ["Idempotency keys, so retries never double-charge", "Signed webhooks that ignore duplicates and out-of-order events", "Plans, 48-hour rentals and regional pricing", "Renewals, retries and a 7-day grace period"]
     },
     features: [
-      { t: "Browse", d: "Trending, must-watch and genre rows on the home page." },
-      { t: "Search", d: "Find any title by name, people or genre." },
-      { t: "Detail Pages", d: "Rich pages with play, trailer and info." },
-      { t: "Dashboard", d: "Track movies watched, watch time and lists." },
-      { t: "Plans", d: "Tiered subscription plans for members." },
-      { t: "Admin Tools", d: "Manage the catalog and content from an admin area." }
+      { t: "Catalogue & search", d: "Browse and search the full title catalogue." },
+      { t: "Video player", d: "Native playback with saved progress." },
+      { t: "Watchlist", d: "Save titles and pick up where you left off." },
+      { t: "Plans", d: "Subscriptions priced in the viewer's currency." },
+      { t: "48-hour rentals", d: "Rent a single title without a plan." },
+      { t: "Manage plan", d: "Pay now, cancel, resume and billing history." }
     ],
+    artShots: true,
     shots: [
-      { img: "projects/shots/nova-1.jpg", label: "Landing" },
-      { img: "projects/shots/nova-2.jpg", label: "Plans" },
-      { img: "projects/shots/nova-3.jpg", label: "Browse" },
-      { img: "projects/shots/nova-4.jpg", label: "Detail" }
+      { img: "projects/shots/nova-art-1.jpg", label: "Onboarding" },
+      { img: "projects/shots/nova-art-2.jpg", label: "Onboarding" },
+      { img: "projects/shots/nova-art-3.jpg", label: "Onboarding" }
     ],
-    stack: ["React", "Node.js", "Express", "MongoDB", "REST API"],
-    highlights: ["Netflix-style browse", "Full-text search", "Account dashboard", "Admin content tools"],
+    stack: ["Flutter", "provider", "video_player", "webview_flutter", "Node.js", "TypeScript", "Postgres", "Stripe"],
     challenges: [
-      { c: "Serving a fast, poster-heavy browse experience.", s: "Lazy-loaded rows and optimised images so the home page stays quick even with many titles." },
-      { c: "Managing catalog data and user accounts together.", s: "Built a structured MongoDB schema with a clean REST API separating content and account concerns." }
+      { c: "A late or missing webhook could leave a paying customer locked out.", s: "While a checkout is open, status checks also ask the provider directly — the outcome is applied once, whichever arrives first." },
+      { c: "A crash right after charging could charge again on retry.", s: "Every attempt's idempotency key carries its attempt number, so a retried renewal can never double-charge." }
     ],
-    process: ["Research", "Wireframing", "UI Design", "Development", "Testing", "Deployment"],
-    results: [{ n: "15+", l: "Screens" }, { n: "12+", l: "Features" }, { n: "100%", l: "Responsive" }, { n: "8", l: "Weeks" }]
-  },
-
-  "finance-tracker": {
-    title: "Finance Tracker",
-    subtitle: "Personal Finance Dashboard",
-    type: "web",
-    badge: "Featured Project",
-    hero: "projects/finance_tracker.jpg",
-    description: "A personal finance dashboard to track income, expenses, budgets and savings goals — with categories, beautiful charts and clear monthly reports.",
-    tags: ["Web App", "Charts", "Dashboard"],
-    links: { demo: "#", github: "", pdf: "" },
-    meta: { role: "Solo Developer", duration: "2 Months", platform: "Web", status: "Completed", release: "2025" },
-    problem: [
-      "Many people find it hard to track daily expenses and manage budgets effectively.",
-      "Existing apps are often too complicated, full of ads, or lock basic features behind a subscription."
-    ],
-    solution: {
-      intro: "Finance Tracker is a simple yet powerful dashboard that helps users track money, set budgets and visualise spending with clean analytics.",
-      points: ["Easy tracking of income & expenses", "Budget management with alerts", "Insightful charts and reports", "Savings goals & emergency fund"]
-    },
-    features: [
-      { t: "Transactions", d: "Add, edit and delete income and expenses easily." },
-      { t: "Budgets", d: "Set monthly budgets and get alerts near your limit." },
-      { t: "Categories", d: "Organise transactions into categories for insight." },
-      { t: "Reports", d: "Visualise spending patterns with charts and reports." },
-      { t: "Savings Goals", d: "Set goals and track progress toward them." },
-      { t: "Dashboard", d: "See balance, income, expenses and net savings at a glance." }
-    ],
-    shots: [
-      { img: "projects/shots/finance-1.jpg", label: "Dashboard" },
-      { img: "projects/shots/finance-2.jpg", label: "Goals" },
-      { img: "projects/shots/finance-3.jpg", label: "Categories" },
-      { img: "projects/shots/finance-4.jpg", label: "Reports" }
-    ],
-    stack: ["JavaScript", "Charts", "REST API", "Local Storage"],
-    highlights: ["Income & expense tracking", "Budgets with alerts", "Charts & reports", "Savings goals"],
-    challenges: [
-      { c: "Keeping transactions and monthly summaries consistent.", s: "Centralised the transaction logic so totals, budgets and charts always recompute from one source of truth." },
-      { c: "Presenting dense financial data clearly.", s: "Used a card-based dashboard with focused charts so the most important numbers stand out first." }
-    ],
-    process: ["Research", "Wireframing", "UI Design", "Development", "Testing", "Deployment"],
-    results: [{ n: "12+", l: "Screens" }, { n: "10+", l: "Features" }, { n: "100%", l: "Responsive" }, { n: "2", l: "Months" }]
+    results: [{ n: "5", l: "Currencies" }, { n: "48h", l: "Rentals" }, { n: "7-day", l: "Grace period" }, { n: "0", l: "Card details in the app" }]
   }
 };
-window.PROJECT_ORDER = ["event-management", "newzler", "karyana-store", "nova-cinema", "finance-tracker"];
+window.PROJECT_ORDER = ["finora", "event-management", "you2art", "newzler", "karyana-store", "agri-expert", "nova-cinema"];
